@@ -2,15 +2,17 @@
 
 <div class="m-auto mt-5 text-center">
 
-    <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676710070/GetFit/GetFit.mu_PNG_IDENTITY-07_cdvldx.png", width: 200, crop: :fill) %>
+    <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676710070/GetFit/GetFit.mu_PNG_IDENTITY-07_cdvldx.png", width: 150, crop: :fill) %>
 
     <h1 class="light thick mt-5"> GetFit.mu </h1>
-    <h2 class="light thin"> Your fitness journey starts here </h2>
+    <h4 class="light thin"> Your fitness journey starts here </h2>
 
-    <p class="light"> GetFit is a fitness community that helps you achieve your fitness goals. </p>
-    <p class="light"> Join us today and start your fitness journey. </p>
-
-      <div class="login-buttons">
+    <p class="light"> 
+    GetFit is a fitness community that helps find your coach. 
+    <br>
+    Join us today and start your fitness journey.
+    </p>
+      <div class="login-buttons mt-5">
        <%= link_to "Sign up", new_user_registration_path, class: "btn-gf" %>
        
         <%= link_to "Log in", new_user_session_path, class: "btn-gf" %>
