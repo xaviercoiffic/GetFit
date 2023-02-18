@@ -1,31 +1,30 @@
+<div class="layout-content">
 <div class="footer-container">
         <div class="row">
-            <div class="col-md-3">
-
-          <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/Home_eurajc.svg", width: 35, crop: :fill) %>
+            <div class="col">
+          <%= link_to(image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/Home_eurajc.svg", width: 35, crop: :fill), users_path) %>
           <h6 class="footer-text"> Home </h6>
-
-
             </div>
 
-            <div class="col-md-3">
+            <div class="col">
 
-            <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/Profile_gldf19.svg", width: 35, crop: :fill) %>
+            <%= link_to(image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/Profile_gldf19.svg", width: 35, crop: :fill), '/pages/profile') %>
             <h6 class="footer-text"> Profile </h6>
             </div>
 
-            <div class="col-md-3">
+            <div class="col">
 
-            <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/bookings_g6kalr.svg", width: 35, crop: :fill) %>
+            <%= link_to(image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/bookings_g6kalr.svg", width: 35, crop: :fill), bookings_path) %>
             <h6 class="footer-text"> Bookings </h6>
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col">
 
-            <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/chat_kguiev.svg", width: 35, crop: :fill) %>
+            <%= link_to(image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676723482/GetFit/assets/icons/chat_kguiev.svg", width: 35, crop: :fill), '/pages/chat') %>
             <h6 class="footer-text"> Chat </h6>
 
             </div>
         </div>
+    </div>
     </div>

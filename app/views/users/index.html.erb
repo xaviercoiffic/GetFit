@@ -1,18 +1,72 @@
 <div class="layout-content">
 
- <h1> Our Instructors </h1>
+<div class="stopwatch">
+	<p class="timer-text" onclick="start()">Start |</p>  
+	<p class="timer-text" onclick="stop()">Stop |</p> 
+	<p class="timer-text" onclick="reset()">Reset</p> 
 
-<div class="user-list">
-<ul>
-  <% @users.select { |user| user.instructor }.each do |user| %>
-    <li>
-      <img src="<%= user.photo %>" width="100px" >
-      <%= user.name %>
-      <%= user.speciality %>
-      <%= link_to "View", user_path(user), class: "btn-gf" %>
-    </li>
-  <% end %>
-</ul>
+<h1 id="timer" class="timer">00:00:000</h1>
+
+	<script>
+		var startTime;
+		var elapsedTime = 0;
+		var timerInterval;
+
+		function pad(num, size) {
+			var s = num+"";
+			while (s.length < size) {
+				s = "0" + s;
+			}
+			return s;
+		}
+
+		function updateTimer() {
+			var ms = elapsedTime % 1000;
+			var s = Math.floor(elapsedTime / 1000) % 60;
+			var m = Math.floor(elapsedTime / (1000 * 60));
+			var displayString = pad(m, 2) + ":" + pad(s, 2) + ":" + pad(ms, 3);
+			document.getElementById("timer").innerHTML = displayString;
+		}
+
+		function start() {
+			startTime = Date.now() - elapsedTime;
+			timerInterval = setInterval(function() {
+				elapsedTime = Date.now() - startTime;
+				updateTimer();
+			}, 10);
+		}
+
+		function stop() {
+			clearInterval(timerInterval);
+		}
+
+		function reset() {
+			elapsedTime = 0;
+			updateTimer();
+		}
+	</script>
+
 </div>
 
+  <h3 class="glow"> Our Instructors </h1>
+  <br>
+  <div class="user-list">
+    <ul>
+      <% @users.select { |user| user.instructor }.each do |user| %>
+        <li class="li-user-card">
+         <div class="user-card">
+            <div>
+              <img src="<%= user.photo %>" width="70px" >
+            </div>
+            <div class="title-user-card">
+              <h5 class="darkversion thick"><%= user.name %></h3>
+              <p class="light"><%= user.speciality %></p>
+            </div>
+            <div>
+              <%= link_to "View", user_path(user), class: "btn-gf" %>
+            </div>
+         </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
