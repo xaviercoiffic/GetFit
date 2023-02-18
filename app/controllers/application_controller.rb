@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(current_user)
-   index_path
+  index_path
   end
 end
