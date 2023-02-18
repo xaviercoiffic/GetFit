@@ -2,17 +2,21 @@
 .btn-gf {
 padding: 12px 20px;
 gap: 10px;
-background: $darkgrey ;
-color: $white ;
+background: $pri-cc ;
+color: $darkgray ;
 border-radius: 8px;
 border-color: transparent;
+text-decoration: none;
+margin-top: 20px;
+width: 100%;
+font-weight: 700;
 }
 
 .btn-gf:hover {
   padding: 12px 20px;
   gap: 10px;
-  background: $lavagrey ;
-  color: $white ;
+  background: $pri-cc ;
+  color: $darkgray ;
   border-radius: 8px;
   border-color: transparent;
   }
