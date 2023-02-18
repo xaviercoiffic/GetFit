@@ -2,14 +2,17 @@
 
  <h1> Our Instructors </h1>
 
-<% if current_user.instructor %>
-  <% @users.each do |user| %>
-    <%= user.name %>
-    <%= user.speciality %>
-
-    <%= link_to "View", user_path(user), class: "btn-gf" %>
+<div class="user-list">
+<ul>
+  <% @users.select { |user| user.instructor }.each do |user| %>
+    <li>
+      <img src="<%= user.photo %>" width="100px" >
+      <%= user.name %>
+      <%= user.speciality %>
+      <%= link_to "View", user_path(user), class: "btn-gf" %>
+    </li>
   <% end %>
-<% end %>
-
+</ul>
+</div>
 
 </div>
