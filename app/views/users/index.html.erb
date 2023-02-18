@@ -1,8 +1,15 @@
 <div class="layout-content">
 
- <%= render "shared/navbar" %>
-
  <h1> Our Instructors </h1>
+
+<% if current_user.instructor %>
+  <% @users.each do |user| %>
+    <%= user.name %>
+    <%= user.speciality %>
+
+    <%= link_to "View", user_path(user), class: "btn-gf" %>
+  <% end %>
+<% end %>
 
 
 </div>
