@@ -3,7 +3,7 @@ class PackagesController < ApplicationController
   before_action :set_package, only: [:show]
   before_action :set_user_package, only: %i[edit update destroy]
   def index
-    @packeges = Packages.all
+    @packages = Packages.all
   end
 
   def new
@@ -21,7 +21,7 @@ class PackagesController < ApplicationController
   end
 
   def show
-    @review = Review.new
+
   end
 
 
@@ -39,7 +39,7 @@ class PackagesController < ApplicationController
     redirect_to packages_path
   end
 
-  def product_params
-    params.require(:package).permit(:title, :duration, :description, :price)
+  def package_params
+    params.require(:package).permit(:title, :description)
   end
 end
