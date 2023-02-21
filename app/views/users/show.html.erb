@@ -1,8 +1,12 @@
 <div class="layout-content">
-
-      <img src="<%= @user.photo %>" width="100px" >
+<div class="align-center">
+      <img src="<%= @user.photo %>" width="300px" >
       <h1 class="light"> <%= @user.name %> </h1>
       <p class="light"><%= @user.speciality %></p>
       <p class="light"><%= @user.description %></p>
 
+      <%= simple_form_for Booking.create do |f| %>
+      <%= f.submit "Boook a session", class: "btn-gf" %>
+      <% end %>
+</div>
 </div>
