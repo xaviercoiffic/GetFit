@@ -47,26 +47,60 @@
 	</script>
 
 </div>
-
-  <h3 class="glow"> Our Instructors </h1>
-  <br>
-  <div class="user-list">
-    <ul>
-      <% @users.select { |user| user.instructor }.each do |user| %>
-        <li class="li-user-card">
-         <div class="user-card">
-            <div>
-              <img src="<%= user.photo %>" width="70px" >
-            </div>
-            <div class="title-user-card">
-              <h5 class="darkversion thick"><%= user.name %></h3>
-              <p class="light"><%= user.speciality %></p>
-            </div>
-            <div>
-              <%= link_to "View", user_path(user), class: "btn-gf" %>
-            </div>
-         </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="row justify-align-center">
+<div class="col">
+  <h2 class="glow"> Our Instructors </h2>
 </div>
+<div class="col">
+	<div class="search-container">
+  <input type="text" id="user-search" placeholder="Search">
+</div>
+</div>
+</div>
+  <br>
+<div class="user-list">
+  <ul id="user-ul">
+    <% @users.select { |user| user.instructor }.each.with_index(1) do |user, i| %>
+      <li class="li-user-card">
+        <div class="user-card">
+          <div>
+            <img src="<%= user.photo %>" width="70px">
+          </div>
+          <div class="title-user-card">
+            <h5 class="darkversion thick"><%= user.name %></h5>
+            <p class="light"><%= user.speciality %></p>
+          </div>
+          <div>
+            <%= link_to "View", user_path(user), class: "btn-gf" %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<script>
+const searchInput = document.getElementById('user-search');
+const userList = document.getElementById('user-ul');
+
+searchInput.addEventListener('keyup', function(event) {
+  const searchText = event.target.value.toLowerCase();
+  const userCards = userList.querySelectorAll('.user-card');
+
+  userCards.forEach(userCard => {
+    const name = userCard.querySelector('.title-user-card h5').textContent.toLowerCase();
+    const speciality = userCard.querySelector('.title-user-card p').textContent.toLowerCase();
+
+    if (name.includes(searchText) || speciality.includes(searchText)) {
+      userCard.parentNode.style.display = 'block';
+    } else {
+      userCard.parentNode.style.display = 'none';
+    }
+  });
+});
+</script>
+</div>
+
+
+
+

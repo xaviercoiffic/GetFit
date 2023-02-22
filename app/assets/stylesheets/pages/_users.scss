@@ -1,29 +1,24 @@
-.user-list
- {
-min-width: 415px;
-height: 100%;
+.user-list {
+  min-width: 415px;
 }
 
-.user-card
- {
+.user-card {
   display: flex;
   gap: 25px;
   justify-content: space-around;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 10px;
   border-radius: 20px;
   background-color: $darkgray;
 }
 
-.li-user-card
-{
+.li-user-card {
   list-style: none;
   margin-left: -30px;
 }
 
-.title-user-card
-{
+.title-user-card {
   flex-grow: 2;
 }
 
@@ -52,4 +47,23 @@ height: 100%;
   width: 300px;
   text-align: center;
   padding-right: 350px;
+}
+
+#user-search {
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid $pri-cc;
+  color: $pri-cc;
+  font-size: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $bg-color;
+}
+
+#user-search::placeholder {
+  color: $pri-cc;
+}
+
+input:focus {
+  outline: none;
 }
