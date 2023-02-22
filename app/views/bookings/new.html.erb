@@ -1,0 +1,11 @@
+<div class="layout-content">
+
+<h2 class="light"> You are booking a session with</h2>
+
+      <%= simple_form_for Booking.new do |f| %>
+      <%= f.input :date, as: :date %>
+      <%= f.input :time, as: :time %>
+      <%= f.submit "Preview Booking", class: "btn-gf" %>
+      <% end %>
+
+</div>
