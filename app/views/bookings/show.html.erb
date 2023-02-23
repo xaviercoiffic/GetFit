@@ -1,0 +1,20 @@
+<div class="layout-content">
+
+<h1>Booking Details</h1>
+
+<p><strong>Date:</strong> <%= @booking.date %></p>
+<p><strong>Time:</strong> <%= @booking.time %></p>
+
+<h2>Other Bookings for <%= @user.name %></h2>
+
+<ul>
+  <% @user.bookings.each do |booking| %>
+    <li>
+      <%= link_to booking.date, booking %>
+      <%= booking.time %>
+    </li>
+  <% end %>
+</ul>
+
+
+</div>

@@ -1,40 +1,63 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_user
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bookings = Booking.all
+    @bookings = @user.bookings
   end
 
   def show
-    @rating = Rating.new
   end
 
   def new
-    @booking = Booking.new
+    @user = User.find(params[:user_id])
+    @booking = @user.bookings.build
+    render :new, locals: { user: @user, booking: @booking }
+  end  
+
+  def edit
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user = current_user
+    @user = User.find(params[:user_id])
+    @booking = @user.bookings.new(booking_params)
+  
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to confirmation_booking_path(@booking, user_id: @booking.user_id)
     else
-      render :new, status: :unprocessable_entity
+      render :new
+    end
+  end
+  
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to user_booking_path(@user, @booking), notice: "Booking was successfully updated."
+    else
+      render :edit
     end
   end
 
   def destroy
     @booking.destroy
-    redirect_to booking_path, status: :see_other
+    redirect_to user_bookings_path(@user), notice: "Booking was successfully destroyed."
+  end
+
+  def confirmation
+    @booking = Booking.find(params[:id])
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = @user.bookings.find(params[:id])
   end
 
   def booking_params
-    params.require(:booking).permit(:user_id)
+    params.require(:booking).permit(:date, :time, :duration, :user_id, :package_id, :specialities, :status)
   end
 end
