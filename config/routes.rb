@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'pofile', to: 'pages#profile'
 
-  resources :users
-  resources :packages
-  resources :bookings do
-    resources :reviews, only: [:index, :new, :create]
+  resources :users do 
+    resources :bookings
   end
-  resources :reviews, only: [:show, :destroy, :update, :edit]
 
 get 'index' => 'users#index'
+get '/bookings/:id', to: 'bookings#show', as: 'booking'
+get 'users/:id/bookings/:id/confirmation', to: 'bookings#confirmation', as: 'confirmation_booking'
 end
