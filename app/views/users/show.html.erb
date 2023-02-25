@@ -16,7 +16,7 @@
         <p class="light"><%= package.price %></p>
       </div>
       <div>
-        <%= link_to "View", new_user_booking_path(current_user, package_id: package.id), class: "btn-gf" %>
+      <%= link_to "View", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
       </div>
     </div>
   </li>

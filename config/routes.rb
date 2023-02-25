@@ -20,7 +20,5 @@ Rails.application.routes.draw do
 
 get 'index' => 'users#index'
 get '/bookings/:id', to: 'bookings#show', as: 'booking'
-get 'users/:id/bookings/:id/confirmation', to: 'bookings#confirmation', as: 'confirmation_booking'
-get 'confirmation_success', to: 'bookings#confirmation_success'
-
+get 'users/:user_id/bookings/:id/confirmation', to: 'bookings#confirmation', as: 'confirmation_booking'
 end
