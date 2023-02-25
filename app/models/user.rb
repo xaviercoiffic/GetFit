@@ -4,11 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :packages
+  has_and_belongs_to_many :packages
   has_many :bookings, dependent: :destroy
   has_many :goals
   has_many :chatrooms
   has_many :reviews, through: :bookings
-
   validates :email, presence: true, uniqueness: true
 end
