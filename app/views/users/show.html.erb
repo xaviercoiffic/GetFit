@@ -5,10 +5,24 @@
       <p class="light"><%= @user.speciality %></p>
       <p class="light"><%= @user.description %></p>
 
-     <%= link_to "Book A Session", url_for(controller: "bookings", action: "new", user_id: @user.id), class: "btn-gf" %>
-
-
-
+<div class="user-list">
+  <ul id="user-ul">
+    <% @packages.each do |package| %>
+  <li class="li-user-card">
+    <div class="user-card">
+      <div class="title-user-card">
+        <h5 class="darkversion thick"><%= package.title %></h5>
+        <p class="light"><%= package.description %></p>
+        <p class="light"><%= package.price %></p>
+      </div>
+      <div>
+        <%= link_to "View", new_user_booking_path(current_user, package_id: package.id), class: "btn-gf" %>
+      </div>
+    </div>
+  </li>
+<% end %>
+  </ul>
+</div>
 
 </div>
 </div>
