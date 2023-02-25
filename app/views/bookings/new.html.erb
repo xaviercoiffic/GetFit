@@ -4,13 +4,17 @@
 <h1 class="glow"><%= user.name %> </h1>
 
 <div class="light">
-  <%= simple_form_for [@user, @booking] do |f| %>
-    <%= f.input :date, as: :date, label: "Date", html5: true %>
-    <%= f.input :time, as: :time, label: "Time", html5: true %>
-    <%= f.input :duration, collection: ['1 Hour', '2 Hours', '3 Hours', '4 Hours'], prompt: 'Select duration' %>
-    <%= f.input :specialities  %>
-    <%= f.input :package_id, as: :hidden, input_html: { value: @package.id } %>
-    <%= f.submit "Book", class: "btn-gf" %>
+<%= simple_form_for [@user, @booking] do |f| %>
+  <%= f.input :date, as: :date, label: "Date", html5: true %>
+  <%= f.input :time, as: :time, label: "Time", html5: true %>
+  <%= f.input :duration, collection: ['1 Hour', '2 Hours', '3 Hours', '4 Hours'], prompt: 'Select duration' %>
+  <%= f.collection_radio_buttons :specialities, @user.speciality, :to_s, :to_s, item_wrapper_class: 'speciality-option' do |b| %>
+    <%= b.label(class: 'radio-inline') { b.radio_button + b.text } %>
   <% end %>
+  <%= f.input :package_id, as: :hidden, input_html: { value: @package.id } %>
+  <%= f.submit "Book", class: "btn-gf" %>
+<% end %>
+
+
 </div>
 </div>
