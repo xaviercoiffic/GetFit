@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :chatrooms
   has_many :reviews, through: :bookings
   validates :email, presence: true, uniqueness: true
+  serialize :speciality, Array
 end

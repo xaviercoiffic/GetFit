@@ -68,7 +68,7 @@
           </div>
           <div class="title-user-card">
             <h5 class="darkversion thick"><%= user.name %></h5>
-            <p class="light"><%= user.speciality %></p>
+           <p class="light"><%= user.speciality.join(', ') %></p>
           </div>
           <div>
             <%= link_to "View", user_path(user), class: "btn-gf" %>
