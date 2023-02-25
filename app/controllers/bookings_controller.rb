@@ -19,11 +19,20 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @booking = @user.bookings.new(booking_params)
   
+    @user = User.find(params[:user_id])
+    package = Package.find(params[:package_id])
+    instructor = package.user
+
+    @booking = Booking.new(
+      user: @user,
+      instructor: instructor,
+      package: package,
+      **booking_params
+    )
+    
     if @booking.save
-      redirect_to confirmation_booking_path(@booking, user_id: @booking.user_id)
+      redirect_to confirmation_booking_path(@booking, user_id: @user.id)
     else
       render :new
     end

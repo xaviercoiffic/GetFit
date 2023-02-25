@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'chatroom_users/create'
   devise_for :users
   root to: "pages#home"
-  get 'pofile', to: 'pages#profile'
+  get 'profile', to: 'pages#profile'
 
   resources :users do
+    resources :packages
     resources :bookings
   end
 

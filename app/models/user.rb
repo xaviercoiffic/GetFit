@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_and_belongs_to_many :packages
+  has_many :packages
   has_many :bookings, dependent: :destroy
   has_many :goals
   has_many :chatrooms
