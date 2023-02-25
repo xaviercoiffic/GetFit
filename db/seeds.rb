@@ -134,27 +134,34 @@ User.create([{
   speciality: "Yoga",
   height: 172,
   weight: 60,
-
 }
 ])
 
-Package.create!([
-  {
 
+
+User.find_each do |user|
+  Package.create!(
+    {
+    user_id: user.id,
     title: "Daily",
     description: "The daily gym package is perfect for those who are looking for a one-time visit to the gym or who want to try out the facilities before committing to a longer membership. With this package, you can enjoy access to the gym's equipment, group fitness classes, and other amenities for a single day. It's a great way to stay active and work towards your fitness goals without any long-term commitment.",
     price: 100,
-  },
-  {
-
+    }
+    )
+  Package.create!(
+    {
+    user_id: user.id,
     title: "Weekly",
     description: "If you're looking for a more extended workout routine, the weekly gym package might be a better fit for you. With this package, you can enjoy all the benefits of a daily package, but for an entire week. This option is ideal for people who travel frequently or those who want to try out the gym for a longer period without making a long-term commitment.",
     price: 500,
-  },
-  {
-
+    }
+    )
+  Package.create!(
+    {
+    user_id: user.id,
     title: "Monthly",
     description: "For those who are serious about their fitness goals, the monthly gym package is the perfect solution. With this package, you'll have access to the gym's facilities and amenities for an entire month. You can work out at your own pace, take advantage of the gym's group fitness classes, and use the equipment to meet your fitness goals. This package offers the best value for money and is the ideal option for those who want to make fitness a regular part of their lifestyle. ",
     price: 2000,
-  }
-])
+    }
+    )
+  end
