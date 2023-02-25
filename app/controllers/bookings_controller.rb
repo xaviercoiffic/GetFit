@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bookings = @user.bookings
+    @bookings = current_user.bookings.includes(:package => :user)
   end
 
   def show
@@ -11,32 +11,30 @@ class BookingsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @booking = @user.bookings.build
-    render :new, locals: { user: @user, booking: @booking }
-  end  
+    @package = Package.find(params[:package_id])
+    @booking = @user.bookings.build(package: @package)
+
+    render :new, locals: { user: @user }
+  end 
 
   def edit
   end
 
-  def create
+ 
   
-    @user = User.find(params[:user_id])
-    package = Package.find(params[:package_id])
-    instructor = package.user
+  def create
+      @user = User.find(params[:user_id])
+      @booking = @user.bookings.build(booking_params)
+      @booking.user_id = current_user.id
 
-    @booking = Booking.new(
-      user: @user,
-      instructor: instructor,
-      package: package,
-      **booking_params
-    )
-    
-    if @booking.save
-      redirect_to confirmation_booking_path(@booking, user_id: @user.id)
-    else
-      render :new
-    end
+  
+      if @booking.save
+        redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
+      else
+        render :new, locals: { user: @user }
+      end
   end
+  
   
 
   def update
@@ -54,6 +52,7 @@ class BookingsController < ApplicationController
   end
 
   def confirmation
+    @user = User.find(params[:user_id])
     @booking = Booking.find(params[:id])
   end
 
@@ -68,6 +67,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date, :time, :duration, :user_id, :package_id, :specialities, :status)
+    params.require(:booking).permit(:date, :time, :duration, :specialities, :package_id)
   end
 end
