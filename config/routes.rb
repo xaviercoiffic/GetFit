@@ -11,11 +11,8 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  Rails.application.routes.draw do
-    resources :chatrooms do
-    resources :chatroom_users, only: [:new, :create]
-    resources :messages, only: [:create]
-    end
+  resources :chatrooms, only: :show do
+  resources :messages, only: :create
   end
 
 get 'index' => 'users#index'
