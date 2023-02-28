@@ -1,16 +1,13 @@
 class MessagesController < ApplicationController
-  before_action :set_chatroom
-
   def create
-    @message = @chatroom.messages.new(message_params)
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    @message = Message.new(message_params)
+    @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
-      ActionCable.server.broadcast "chatroom_channel",
-                                   message: render_message(@message),
-                                   chatroom_id: @chatroom.id
-      head :ok
+      redirect_to chatroom_path(@chatroom)
     else
-      flash[:alert] = "Unable to send message."
+      render "chatrooms/show", status: :unprocessable_entity
     end
   end
 
@@ -18,13 +15,5 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content)
-  end
-
-  def set_chatroom
-    @chatroom = Chatroom.find(params[:chatroom_id])
-  end
-
-  def render_message(message)
-    render(partial: 'messages/message', locals: { message: message })
   end
 end
