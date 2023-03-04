@@ -1,9 +1,9 @@
 <div class="layout-content">
 
 <div class="hero-top">
-<img src="https://res.cloudinary.com/dbfx0jmo6/image/upload/v1677929767/GetFit/assets/Img/Neil_jzmofm.png" class="pt-5">
-<h2 class="light thick pt-5">WELCOME BACK</h2>
-<h4 class="light pb-5"><%= current_user.name %></h4>
+
+
+
 </div>
 
 
@@ -80,11 +80,11 @@
       <li class="li-user-card">
         <div class="user-card">
           <div>
-            <img src="<%= user.photo %>" width="70px">
+            <img src="<%= user.photo %>" width="80px">
           </div>
           <div class="title-user-card">
-            <h5 class="pink thick"><%= user.name %></h5>
-           <p class="light"><%= user.speciality.join(', ') %></p>
+            <h5 class="pink thicker"><%= user.name %></h5>
+           <p class="light light"><%= user.speciality.join(', ') %></p>
           </div>
           <div>
             <%= link_to "View", user_path(user), class: "btn-gf" %>

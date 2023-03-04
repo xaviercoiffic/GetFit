@@ -10,10 +10,12 @@
 @import "config/bootstrap_variables";
 @import "config/layout";
 
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "pages/users";
+@import "pages/booking";
 @import "components/buttons";
 @import "components/footer";
 
