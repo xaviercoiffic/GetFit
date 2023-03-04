@@ -1,5 +1,14 @@
 <div class="layout-content">
 
+<div class="hero-top">
+<img src="https://res.cloudinary.com/dbfx0jmo6/image/upload/v1677929767/GetFit/assets/Img/Neil_jzmofm.png" class="pt-5">
+<h2 class="light thick pt-5">WELCOME BACK</h2>
+<h4 class="light pb-5"><%= current_user.name %></h4>
+</div>
+
+
+<div class="timerwatch">
+
 <div class="stopwatch">
 	<p class="timer-text" onclick="start()">Start |</p>  
 	<p class="timer-text" onclick="stop()">Stop |</p> 
@@ -47,9 +56,16 @@
 	</script>
 
 </div>
+
+
+</div>
+
+<br>
+
+
 <div class="row justify-align-center">
 <div class="col">
-  <h2 class="glow"> Our Instructors </h2>
+  <h2 class="glow">Instructors </h2>
 </div>
 <div class="col">
 	<div class="search-container">
@@ -67,7 +83,7 @@
             <img src="<%= user.photo %>" width="70px">
           </div>
           <div class="title-user-card">
-            <h5 class="darkversion thick"><%= user.name %></h5>
+            <h5 class="pink thick"><%= user.name %></h5>
            <p class="light"><%= user.speciality.join(', ') %></p>
           </div>
           <div>
@@ -99,6 +115,7 @@ searchInput.addEventListener('keyup', function(event) {
   });
 });
 </script>
+<br><br><br><br><br>
 </div>
 
 

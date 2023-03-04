@@ -42,7 +42,7 @@
 .timer{
   font-size: 70px !important;
   font-weight: 700;
-  color: #CCFF00;
+  color: #a6ff00;
   margin: 0 auto;
   width: 300px;
   text-align: center;
@@ -66,4 +66,37 @@
 
 input:focus {
   outline: none;
+}
+
+.hero-top {
+  background-image: url("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1677921016/GetFit/assets/Background/Sine_Wave_Background_04_mutv06.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.timerwatch{
+  border-radius: 20px;
+  border-style: solid;
+  border-color: $pri-cc;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+#video-container {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }

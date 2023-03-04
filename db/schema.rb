@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_171402) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_01_075948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_171402) do
     t.string "user_id"
     t.string "name"
     t.index ["user_id"], name: "index_chatrooms_on_user_id"
+  end
+
+  create_table "chatrooms_users", id: false, force: :cascade do |t|
+    t.bigint "chatroom_id"
+    t.bigint "user_id"
+    t.index ["chatroom_id", "user_id"], name: "index_chatrooms_users_on_chatroom_id_and_user_id", unique: true
+    t.index ["chatroom_id"], name: "index_chatrooms_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatrooms_users_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
