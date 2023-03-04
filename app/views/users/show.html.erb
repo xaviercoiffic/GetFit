@@ -1,23 +1,29 @@
 <div class="layout-content">
 <div class="align-center">
       <img src="<%= @user.photo %>" width="300px" >
-      <h1 class="light pink"> <%= @user.name %> </h1>
-      <p class="light"><%= @user.speciality.join(', ') %></p>
+      <br><br>
+      <h1 class="light pink thick"> <%= @user.name %> </h1>
+      <h4 class="light"><%= @user.speciality.join(', ') %></h4>
+      <br><br>
       <p class="light"><%= @user.description %></p>
+
+      <br><br><br>
 
 <div class="user-list">
   <ul id="user-ul">
     <% @packages.each do |package| %>
   <li class="li-user-card">
-    <div class="user-card">
-      <div class="title-user-card">
-        <h5 class="pink thick"><%= package.title %></h5>
+    <div class="user-show-card">
+      
+      <div class="d-flex justify-content-between align-items-center pb-4">
+        <h2 class="pink thick"><%= package.title %></h2> <h5 class="light thicker">Rs <%= package.price %></h6>
+        </div>
         <p class="light"><%= package.description %></p>
-        <p class="light"><%= package.price %></p>
-      </div>
-      <div>
-      <%= link_to "View", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
-      </div>
+        <br>
+      
+      
+      <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf-user" %>
+       <br> <br> 
     </div>
   </li>
 <% end %>
