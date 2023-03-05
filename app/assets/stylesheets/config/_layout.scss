@@ -16,6 +16,18 @@ body
   padding-bottom: 100px;
 }
 
+.layout-content-home
+{
+  max-width: 768px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  margin-top: 200px;
+}
+
 .login-buttons {
   display: flex;
   justify-content: center;

@@ -1,1 +1,22 @@
 // Specific CSS for your home-page
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -2;
+  filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* CSS for the slides */
+.slide {
+  display: none;
+}
+.active-slide {
+  display: block;
+}

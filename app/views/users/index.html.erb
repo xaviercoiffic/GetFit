@@ -2,8 +2,7 @@
 
 <div class="row d-flex align-items-center mb-5">
   <div class="col-10 d-flex align-items-center">
-<img src="https://res.cloudinary.com/dbfx0jmo6/image/upload/v1677948543/GetFit/assets/Img/profile_circle_heusxq.png" width="80px">
-
+<img src="<%= @current_user.photo %>" width="80px">
 <div class="col inline">
 <h6 class="whity px-3 thin">Welcome back!</h6>
 <% if current_user.name.present? %>

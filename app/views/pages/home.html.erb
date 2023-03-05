@@ -1,25 +1,53 @@
-<div class="layout-content">
+<div class="layout-content-home">
+  <div id="step1" class="slide active-slide align-center">
+    <img width="150" crop="fill" src="https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676710070/GetFit/GetFit.mu_PNG_IDENTITY-07_cdvldx.png">
+    <br><br>
+    <h6 class="whity thick">GetFit - Step 1</h6>
+    <h1 class="glow thicker">YOUR FITNESS JOURNEY STARTS HERE</h1>
+    <p class="whity home">GetFit is a fitness community that helps find your coach. Book a session with a coach and start your fitness journey.</p>
+    <br><br>
+    <i onclick="nextStep()" class="fa-solid fa-arrow-right fa-3x glow"></i>
+    <video id="background-video" autoplay muted loop>
+      <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042846/GetFit/assets/video/fit-1_whusvr.mp4" type="video/mp4">
+    </video>
+  </div>
+ 
+  <div id="step2" class="slide">
+    <br><br><br>
+    <h6 class="whity thick">GetFit - Step 2</h6>
+    <h1 class="glow thicker">FIND YOUR COACH EASILY</h1>
+    <p class="whity home">Have access to a directory of coaches and book a session with the one that suits you best. Our app manages all your bookings and payments.</p>
+    <br><br>
+    <i onclick="nextStep()" class="fa-solid fa-arrow-right fa-3x glow"></i>
+    <video id="background-video" autoplay loop muted>
+      <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042828/GetFit/assets/video/young-athlete-training-in-the-gym-2023-02-21-22-05-05-utc_ys08mq.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<div class="m-auto mt-5 text-center">
-
-    <%= image_tag("https://res.cloudinary.com/dbfx0jmo6/image/upload/v1676710070/GetFit/GetFit.mu_PNG_IDENTITY-07_cdvldx.png", width: 150, crop: :fill) %>
-
-    <h1 class="light thick mt-5"> GetFit.mu </h1>
-    <h4 class="light thin"> Your fitness journey starts here </h2>
-
-    <p class="light"> 
-    GetFit is a fitness community that helps find your coach. 
-    <br>
-    Join us today and start your fitness journey.
-    </p>
-      <div class="login-buttons mt-5">
-       <%= link_to "Sign up", new_user_registration_path, class: "btn-gf" %>
-       
-        <%= link_to "Log in", new_user_session_path, class: "btn-gf" %>
-      </div>
-    <br><br> <br><br>
-    <p class="light"> Alpha Release V1.0 </p>
-
-</div>
-
+  <div id="step3" class="slide align-center">
+    <br><br><br>
+    <h6 class="whity thick">GetFit - Step 3</h6>
+    <h1 class="glow thicker">READY? <br>LET'S GO!</h1>
+    <p class="whity home">Start your fitness journey by creating an account or log into your account if you already have one. Time to GetFit!</p>
+    <br><br>
+    <div class="login-buttons mt-5">
+      <%= link_to "Sign up", new_user_registration_path, class: "btn-gf" %>
+      <%= link_to "Log in", new_user_session_path, class: "btn-gf" %>
+    </div>
+    <video id="background-video" autoplay loop muted>
+      <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042787/GetFit/assets/video/young-athlete-training-in-the-gym-2023-02-21-22-04-47-utc_hzotth.mp4" type="video/mp4">
+    </video>
+  </div>
+  <script>
+    function nextStep() {
+      // Get the current active slide
+      const currentSlide = document.querySelector('.active-slide');
+      // Remove the active class from the current slide
+      currentSlide.classList.remove('active-slide');
+      // Get the next slide
+      const nextSlide = currentSlide.nextElementSibling;
+      // Add the active class to the next slide
+      nextSlide.classList.add('active-slide');
+    }
+  </script>
 </div>
