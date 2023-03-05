@@ -4,7 +4,7 @@ padding: 12px 20px;
 gap: 10px;
 background: $pri-cc ;
 color: $darkgray ;
-border-radius: 8px;
+border-radius: 30px;
 border-color: transparent;
 text-decoration: none;
 margin-top: 20px;
@@ -15,21 +15,8 @@ font-weight: 700;
 .btn-gf:hover {
   padding: 12px 20px;
   gap: 10px;
-  background: $pri-cc ;
-  color: $darkgray ;
-  border-radius: 8px;
+  background: $sec-cc;
+  color: $darkgray;
+  border-radius: 30px;
   border-color: transparent;
   }
-
-  .btn-gf-user {
-    padding: 12px 20px;
-    gap: 10px;
-    background: $pri-cc ;
-    color: $darkgray ;
-    border-radius: 8px;
-    border-color: transparent;
-    text-decoration: none;
-    margin-top: 20px;
-    width: 100%;
-    font-weight: 700;
-    }

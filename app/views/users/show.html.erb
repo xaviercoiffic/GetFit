@@ -2,10 +2,10 @@
 <div class="align-center">
       <img src="<%= @user.photo %>" width="300px" >
       <br><br>
-      <h1 class="light pink thick"> <%= @user.name %> </h1>
+      <h1 class="light whity thick"> <%= @user.name %> </h1>
       <h4 class="light"><%= @user.speciality.join(', ') %></h4>
       <br><br>
-      <p class="light"><%= @user.description %></p>
+      <p class="whity"><%= @user.description %></p>
 
       <br><br><br>
 
@@ -16,13 +16,13 @@
     <div class="user-show-card">
       
       <div class="d-flex justify-content-between align-items-center pb-4">
-        <h2 class="pink thick"><%= package.title %></h2> <h5 class="light thicker">Rs <%= package.price %></h6>
+        <h2 class="whity thicker"><%= package.title %></h2> <h5 class="light thick">Rs <%= package.price %></h6>
         </div>
         <p class="light"><%= package.description %></p>
         <br>
       
       
-      <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf-user" %>
+      <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
        <br> <br> 
     </div>
   </li>

@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_user
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  
   def index
     @bookings = current_user.bookings.includes(:package => :user)
   end
@@ -20,23 +20,24 @@ class BookingsController < ApplicationController
   def edit
   end
 
- 
-  
   def create
-      @user = User.find(params[:user_id])
-      @booking = @user.bookings.build(booking_params)
-      @booking.user_id = current_user.id
+    @user = User.find(params[:user_id])
+    @booking = @user.bookings.build(booking_params)
+    @booking.user_id = current_user.id
+    @booking.status = "completed"
 
-  
-      if @booking.save
-        redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
-      else
-        render :new, locals: { user: @user }
-      end
+    if @booking.save
+      next_booking
+      redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
+    else
+      render :new, locals: { user: @user }
+    end
+  end
+
+  def next_booking
+    @next_booking = "mon 23" # replace with your actual logic to calculate next booking date
   end
   
-  
-
   def update
     if @booking.update(booking_params)
       redirect_to user_booking_path(@user, @booking), notice: "Booking was successfully updated."

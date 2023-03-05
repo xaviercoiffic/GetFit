@@ -1,5 +1,4 @@
 .footer-container {
-  background-color: $bg-color;
   z-index: 999;
   align-items: center;
   justify-content: space-evenly;
@@ -9,10 +8,34 @@
   font-size: 12px;
   margin: 0 auto;
   position: fixed;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   right: 0;
   max-width: 768px;
+  border-radius: 100px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(7.4px);
+  background: rgba(30, 31, 32, 0.702);
+  border: 1px solid rgba(30, 31, 32, 0.188);
+  @media screen and (max-width: 700px) {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media screen and (max-width: 400px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .footer-text
@@ -21,7 +44,21 @@
   text-align: center;
   font-size: 16px !important;
   font-weight: 400;
-  padding-top: 20px;
+  padding-top: 10px;
+  @media screen and (max-width: 375px) {
+    font-size: 12px !important;
+  }
+}
+
+.footer-icon img {
+  width: 35px; /* set initial width */
+  height: auto; /* set initial height */
+}
+
+@media screen and (max-width: 400px) {
+  .footer-icon img {
+    width: 20px; /* set new width */
+  }
 }
 
 .svg-glow {
