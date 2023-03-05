@@ -134,9 +134,20 @@ User.create([{
   speciality: ["Bootcamp", "Fitness", "Training"],
   height: 172,
   weight: 60,
-}
+},
+{
+  name: "Xavier Coiffic",
+  email: "xavier.coiffic@gmail.com",
+  password: "abc123",
+  photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678035505/GetFit/Users/Xavier_tts8lu.png",
+  instructor: false,
+  description: " Hi, I'm Xavier and I would like to give GetFit a try",
+  review: 4,
+  speciality: ["Bootcamp", "Fitness", "Training"],
+  height: 173,
+  weight: 60,
+},
 ])
-
 
 
 User.find_each do |user|
