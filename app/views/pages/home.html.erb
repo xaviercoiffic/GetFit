@@ -7,7 +7,7 @@
     <p class="whity home">GetFit is a fitness community that helps find your coach. Book a session with a coach and start your fitness journey.</p>
     <br><br>
     <i onclick="nextStep()" class="fa-solid fa-arrow-right fa-3x glow"></i>
-    <video id="background-video" autoplay muted loop>
+    <video id="background-video" autoplay muted loop playsinline>
       <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042846/GetFit/assets/video/fit-1_whusvr.mp4" type="video/mp4">
     </video>
   </div>
@@ -18,7 +18,7 @@
     <p class="whity home">Have access to a directory of coaches and book a session with the one that suits you best. Our app manages all your bookings and payments.</p>
     <br><br>
     <i onclick="nextStep()" class="fa-solid fa-arrow-right fa-3x glow"></i>
-    <video id="background-video" autoplay loop muted>
+    <video id="background-video" autoplay loop muted playsinline>
       <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042828/GetFit/assets/video/young-athlete-training-in-the-gym-2023-02-21-22-05-05-utc_ys08mq.mp4" type="video/mp4">
     </video>
   </div>
@@ -26,13 +26,13 @@
   <div id="step3" class="slide align-center">
     <h6 class="whity thick">GetFit - Step 3</h6>
     <h1 class="glow thicker">READY? <br>LET'S GO!</h1>
-    <p class="whity home">Start your fitness journey by creating an account or log into your account if you already have one. Time to GetFit!</p>
-    <br><br>
+    <p class="whity home">Start your fitness journey by creating an account or log into your account if you already have one.</P> 
+    <p class="whity home"><strong>Time to GetFit!</strong></p>
     <div class="login-buttons mt-5">
       <%= link_to "Sign up", new_user_registration_path, class: "btn-gf" %>
       <%= link_to "Log in", new_user_session_path, class: "btn-gf" %>
     </div>
-    <video id="background-video" autoplay loop muted>
+    <video id="background-video" autoplay loop muted playsinline>
       <source src="https://res.cloudinary.com/dbfx0jmo6/video/upload/v1678042787/GetFit/assets/video/young-athlete-training-in-the-gym-2023-02-21-22-04-47-utc_hzotth.mp4" type="video/mp4">
     </video>
   </div>
