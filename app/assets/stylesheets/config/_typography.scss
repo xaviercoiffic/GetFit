@@ -37,11 +37,12 @@ h6 {
 p {
   font-family: $body-font;
   font-size:  16px !important;
+  font-weight: 200;
 }
 
 
 .light {
-  color: #fff;
+  color: #94a1b2;
 }
 
 .light.thin {
@@ -68,8 +69,8 @@ p {
   color: #a6ff00;
 }
 
-.pink {
-  color: #fe01b3;
+.whity {
+  color: #d9d9d9;
 }
 
 .headline {
@@ -80,4 +81,8 @@ p {
 
 .thicker {
   font-weight: 900;
+}
+
+.thin {
+  font-weight: 200;
 }
