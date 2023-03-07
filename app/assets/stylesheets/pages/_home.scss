@@ -9,8 +9,8 @@
   top: 0;
   bottom: 0;
   z-index: -2;
-  filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 /* CSS for the slides */
