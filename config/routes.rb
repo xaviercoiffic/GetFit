@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :packages
     resources :bookings
+    resources :chatrooms, only: %i[create new]
   end
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: %i[index show] do
   resources :messages, only: :create
   end
 
