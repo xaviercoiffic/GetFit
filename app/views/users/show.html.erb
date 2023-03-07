@@ -11,6 +11,7 @@
 
 <div class="user-list">
   <ul id="user-ul">
+   <%= link_to 'chat', new_user_chatroom_path(@user) %>
     <% @packages.each do |package| %>
   <li class="li-user-card">
     <div class="user-show-card">
