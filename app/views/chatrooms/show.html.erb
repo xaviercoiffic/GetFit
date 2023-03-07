@@ -1,26 +1,52 @@
+<div class="layout-content">
 <div class="container chatroom">
-  <h1>#<%= @chatroom.name %></h1>
-
-  <div class="messages light">
-    <% @chatroom.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
-    <% end %>
+<div class="row pb-1">
+<div class="col d-flex align-items-center justify-content-start ">
+  <img src="<%= @chatroom.user.photo %>" width="80px">
+  <h3 class="glow px-3 thick"><%= @chatroom.user.name %></h3>
+ </div>
   </div>
+
+  <hr class="light">
+
+
+
+ <div class="messages">
+  <% @chatroom.messages.each do |message| %>
+    <div class="clearfix">
+      <% if message.user == current_user %>
+        <div class="my-message">
+          <%= message.content %>
+        </div>
+        <div class="my-timestamp">
+          <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+        </div>
+      <% else %>
+        <div class="other-message">
+          <%= message.content %>
+        </div>
+        <div class="other-timestamp">
+          <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
+
+
+
+</div>
+<div class="pt-5">
 <%= simple_form_for [@chatroom, @message],
   html: {class: "d-flex"} do |f|
 %>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.input :content, label: false, placeholder: "Type your message here...", 
+               wrapper_html: {class: "flex-grow-1"},
+               input_html: {style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
+  <%= f.submit "Send", class: "btn-gf" %>
 <% end %>
+
+</div>
+<br><br><br><br><br>
+</div>
