@@ -1,29 +1,44 @@
 <div class="layout-content">
   <h4 class="glow">You have <strong><%= @chatrooms_count %></strong> chats <i class="fas fa-comment-alt"></i></h4>
- 
-<br>
-<div class="user-list">
-  <ul id="user-ul">
-    <% @chatrooms.reverse.each do |chatroom| %>
-    <% last_message_time = chatroom.messages.last.created_at%>
-      <li class="li-user-card">
-        <div class="user-card">
-          <div>
-            <img src="<%= chatroom.user.photo%>" width="80px">
-          </div>
-          <div class="title-user-card">
-           <h3 class="glow"><%= chatroom.user.name%></h3>
-        <p class="light">Last message: <%= time_ago_in_words(last_message_time) %> ago</p>
-          </div>
-          <div>
-            <%= link_to chatroom_path(chatroom), class:"btn-gf" do %>
-          <i class="fas fa-comments"></i>
-        <% end %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
+  <br>
+  <div class="user-list">
+    <ul id="user-ul">
+      <% @chatrooms.reverse.each do |chatroom| %>
+        <% last_message_time = chatroom.messages.last.created_at %>
+        <li class="li-user-card">
+          <% if current_user == chatroom.user %>
+            <div class="user-card">
+              <div>
+                <img src="<%= User.find(chatroom.client_id).photo %>" width="80px">
+              </div>
+              <div class="title-user-card">
+                <h3 class="glow"><%= link_to User.find(chatroom.client_id).name, user_path(chatroom.client_id) %></h3>
+                <p class="light">Last message: <%= time_ago_in_words(last_message_time) %> ago</p>
+              </div>
+              <div>
+                <%= link_to chatroom_path(chatroom), class: "btn-gf" do %>
+                  <i class="fas fa-comments"></i>
+                <% end %>
+              </div>
+            </div>
+          <% else %>
+            <div class="user-card">
+              <div>
+                <img src="<%= chatroom.user.photo %>" width="80px">
+              </div>
+              <div class="title-user-card">
+                <h3 class="glow"><%= link_to chatroom.user.name, user_path(chatroom.user) %></h3>
+                <p class="light">Last message: <%= time_ago_in_words(last_message_time) %> ago</p>
+              </div>
+              <div>
+                <%= link_to chatroom_path(chatroom), class: "btn-gf" do %>
+                  <i class="fas fa-comments"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

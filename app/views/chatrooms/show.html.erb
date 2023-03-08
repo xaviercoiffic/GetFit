@@ -1,53 +1,58 @@
 <div class="layout-content">
-<div class="container chatroom">
-<div class="row pb-1">
-<div class="col d-flex align-items-center justify-content-start ">
-  <img src="<%= @chatroom.user.photo %>" width="80px">
- <h3 class="glow px-3 thick nolinkstyle"><%= link_to @chatroom.user.name, user_path(@chatroom.user) %></h3>
- </div>
-  </div>
-
-  <hr class="light">
-
-
-
-<div class="messages">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container clearfix">
-      <% if message.user == current_user %>
-        <div class="my-message">
-          <%= message.content %>
-        </div>
-        <div class="my-timestamp">
-          <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
-        </div>
-      <% else %>
-        <div class="other-message">
-          <%= message.content %>
-        </div>
-        <div class="other-timestamp">
-          <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
-        </div>
+  <div class="container chatroom">
+    <div class="row pb-1">
+      <div class="col d-flex align-items-center justify-content-start mb-4">
+        <% if current_user.id == @chatroom.user_id %>
+          <img src="<%= User.find(@chatroom.client_id).photo %>" width="80px">
+          <h3 class="glow px-3 thick nolinkstyle"><%= link_to User.find(@chatroom.client_id).name, user_path(@chatroom.client_id) %></h3>
+          <br><br>
+        <% else %>
+          <img src="<%= @chatroom.user.photo %>" width="80px">
+          <h3 class="glow px-3 thick nolinkstyle"><%= link_to @chatroom.user.name, user_path(@chatroom.user) %></h3>
+          <br><br>
+        <% end %>
+      </div>
+      <hr class="light">
+      <div id="messages-container" class="messages pt-5">
+        <% @chatroom.messages.each do |message| %>
+          <div class="message-container clearfix">
+            <% if message.user == current_user %>
+              <div class="my-message">
+                <%= message.content %>
+              </div>
+              <div class="my-timestamp">
+                <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+              </div>
+            <% else %>
+              <div class="other-message">
+                <%= message.content %>
+              </div>
+              <div class="other-timestamp">
+                <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          setInterval(function() {
+            var chatroomId = <%= @chatroom.id %>;
+            $.ajax({
+              url: '/chatrooms/' + chatroomId + '/messages',
+              dataType: 'script'
+            });
+          }, 3000);
+        });
+      </script>
+    </div>
+    <div class="pt-5">
+      <%= simple_form_for [@chatroom, @message], html: {class: "d-flex"} do |f| %>
+        <%= f.input :content, label: false, placeholder: "Type your message here...", wrapper_html: {class: "flex-grow-1"}, input_html: {style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
+        <%= f.submit "Send", class: "btn-gf" %>
       <% end %>
     </div>
-  <% end %>
-</div>
-
-
-
-
-
-</div>
-<div class="pt-5">
-<%= simple_form_for [@chatroom, @message],
-  html: {class: "d-flex"} do |f|
-%>
-  <%= f.input :content, label: false, placeholder: "Type your message here...", 
-               wrapper_html: {class: "flex-grow-1"},
-               input_html: {style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
-  <%= f.submit "Send", class: "btn-gf" %>
-<% end %>
-
-</div>
-<br><br><br><br><br>
+    <br><br><br><br><br>
+  </div>
 </div>
