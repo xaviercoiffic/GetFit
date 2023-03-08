@@ -4,14 +4,15 @@
       <br><br>
       <h1 class="light whity thick"> <%= @user.name %> </h1>
       <h4 class="light"><%= @user.speciality.join(', ') %></h4>
+      <br>
+      <%= link_to 'Start Chat', new_user_chatroom_path(@user), class: "btn-gf" %>
       <br><br>
       <p class="whity"><%= @user.description %></p>
 
-      <br><br><br>
+      <br><br>
 
 <div class="user-list">
   <ul id="user-ul">
-   <%= link_to 'chat', new_user_chatroom_path(@user) %>
     <% @packages.each do |package| %>
   <li class="li-user-card">
     <div class="user-show-card">
@@ -24,12 +25,12 @@
       
       
       <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
-       <br> <br> 
+       <br> <br> <br> 
     </div>
   </li>
 <% end %>
   </ul>
 </div>
-
+<br> <br> <br> 
 </div>
 </div>

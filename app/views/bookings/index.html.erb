@@ -4,33 +4,48 @@
   <h2 class="glow"> My Bookings </h2>
 </div>
   <br>
-<div class="user-list">
-<ul id="user-ul">
-
-
 
 
 <% if @bookings.empty? %>
   <p>No bookings yet.</p>
 <% else %>
-  <ul>
+<div class="user-list">
+  <ul id="user-ul">
     <% @bookings.each do |booking| %>
-      <li>
-        <p><strong>Date:</strong> <%= booking.date %></p>
-        <p><strong>Time:</strong> <%= booking.time %></p>
-        <p><strong>User:</strong> <%= booking.package.user.name %></p>
+      <li class="li-user-card">
+        <div class="user-card">
+          <div>
+           
+          </div>
+          <div class="title-user-card whity">
+        <p><strong>Start Date:</strong> <%= booking.date %></p>
+        <p><strong>Recurring Time:</strong> <%= booking.time.strftime('%-I:%M%p') %></p>
+        <p><strong>Duration:</strong> <%= booking.duration %></p>
+        <p><strong>Instructor:</strong> <%= booking.package.user.name %></p>
         <p><strong>Package:</strong> <%= booking.package.title %></p>
+     
+          </div>
+          <div>
+<%= link_to "Cancel Booking", booking_path(booking.user, booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn-gf btn-danger" %>
+
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>
-<% end %>
-
-
-
-
-
-
+  <% end %>
 </div>
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
 </div>
 
 

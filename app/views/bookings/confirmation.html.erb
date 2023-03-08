@@ -1,10 +1,10 @@
 <div class="layout-content">
   <h2 class="light thick">Your booking for</h2> 
-  <h2 class="glow"><%= @booking.specialities %> session with</h2>
+  <h2 class="whity"><%= @booking.specialities %> session with</h2>
   <br>
-  <h1 class="pink thicker"><%= @booking.package.user.name %></h1>
+  <h1 class="glow thicker"><%= @booking.package.user.name %></h1>
   <br>
-  <h2 class="light">is scheduled on <br>
+  <h2 class="whity">is scheduled on <br>
     <%= @booking.date.strftime('%-d, %B %Y') %> <br>
     at <%= @booking.time.strftime('%-I:%M%p') %>
   </h2>
