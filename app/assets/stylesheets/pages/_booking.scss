@@ -41,9 +41,8 @@ form {
   border: 2px solid #a6ff00;
   color: white;
   border-radius: 20px;
-  padding: 20px;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 16px;
   width: 100%;
   &:focus{
     background-color: transparent;
@@ -123,4 +122,9 @@ form {
     margin-left: 20px;
   }
     
+  }
+
+  .form-control:focus {
+    outline: none;
+    box-shadow: none;
   }
