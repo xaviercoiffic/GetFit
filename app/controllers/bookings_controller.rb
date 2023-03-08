@@ -17,39 +17,41 @@ class BookingsController < ApplicationController
     render :new, locals: { user: @user }
   end 
 
-  def edit
-  end
-
   def create
     @user = User.find(params[:user_id])
     @booking = @user.bookings.build(booking_params)
     @booking.user_id = current_user.id
-    @booking.status = "completed"
+    @booking.status = "Booked"
 
     if @booking.save
-      next_booking
       redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
     else
       render :new, locals: { user: @user }
     end
   end
 
-  def next_booking
-    @next_booking = "mon 23" # replace with your actual logic to calculate next booking date
+
+  def edit
+    @package = Package.find(params[:package_id])
+    @booking = Booking.find(params[:id])
+    @booking.status = "Updated"
   end
   
   def update
+    @package = Package.find(params[:package_id])
+    @booking = Booking.find(params[:id])
+  
     if @booking.update(booking_params)
-      redirect_to user_booking_path(@user, @booking), notice: "Booking was successfully updated."
+      redirect_to confirmation_booking_path(@package.user, @booking)
     else
       render :edit
     end
   end
+  
 
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to user_bookings_path(@user), notice: "Booking was successfully destroyed."
+    redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled." 
   end
 
   def confirmation

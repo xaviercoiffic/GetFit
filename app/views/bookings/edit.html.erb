@@ -1,0 +1,23 @@
+<div class="layout-content">
+
+  <h2 class="light"> You are booking a session with</h2>
+  <h1 class="glow thick"><%= @package.user.name %> </h1>
+
+  <div class="light mb-5">
+    <%= simple_form_for [@package.user, @booking] do |f| %>
+      <%= f.input :date, as: :date, label: "Date", html5: true, input_html: { value: @booking.date, min: Date.today , class: 'glowbox' } %>
+      <%= f.input :time, label: "Time", input_html: { value: @booking.time, class: 'glowbox' } do %>
+        <%= f.select :time, options_for_select((6..20).map { |h| ["#{h}:00", "#{h}:00:00"] }, @booking.time), {}, { class: 'form-control' } %>
+      <% end %>
+      <%= f.input :duration, label: "Duration", input_html: { value: @booking.duration, class: 'glowbox' }, collection: ['1 Hour', '2 Hours', '3 Hours', '4 Hours'], prompt: 'Select duration' %>
+      <%= f.collection_radio_buttons :specialities, @package.user.speciality, :to_s, :to_s, item_wrapper_class: 'speciality-option' do |b| %>
+        <%= b.label(class: 'radio-inline') { b.radio_button + b.text } %>
+      <% end %>
+      <%= f.input :package_id, as: :hidden, input_html: { value: @package.id } %>
+      <%= f.submit "Update Booking", class: "btn-gf" %>
+    <% end %>
+  </div>
+
+  <br><br><br>
+  
+</div>

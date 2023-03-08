@@ -18,15 +18,21 @@
            
           </div>
           <div class="title-user-card whity">
+        <p class="status-label"><%= booking.status %></p>
         <p><strong>Start Date:</strong> <%= booking.date %></p>
         <p><strong>Recurring Time:</strong> <%= booking.time.strftime('%-I:%M%p') %></p>
         <p><strong>Duration:</strong> <%= booking.duration %></p>
         <p><strong>Instructor:</strong> <%= booking.package.user.name %></p>
         <p><strong>Package:</strong> <%= booking.package.title %></p>
+       
      
           </div>
           <div>
-<%= link_to "Cancel Booking", booking_path(booking.user, booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn-gf btn-danger" %>
+          <br>
+<%= link_to "Update Booking", edit_user_booking_path(booking.package.user, booking), class: "btn-gf" %>
+          <br> <br><br>
+
+<%= link_to "Cancel Booking", user_booking_path(@user, booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn-gf" %>
 
           </div>
         </div>
