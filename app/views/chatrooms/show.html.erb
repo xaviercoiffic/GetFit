@@ -48,11 +48,58 @@
       </script>
     </div>
     <div class="pt-5">
-      <%= simple_form_for [@chatroom, @message], html: {class: "d-flex"} do |f| %>
-        <%= f.input :content, label: false, placeholder: "Type your message here...", wrapper_html: {class: "flex-grow-1"}, input_html: {style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
-        <%= f.submit "Send", class: "btn-gf" %>
-      <% end %>
+
+
+
+   <%= simple_form_for [@chatroom, @message], html: {class: "d-flex", id: "message-form"} do |f| %>
+  <div class="input-group">
+    <%= f.input :content, label: false, placeholder: "Type your message here...", wrapper_html: {class: "flex-grow-1"}, input_html: {id: "message-content", style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
+    <span class="input-group-btn px-3">
+      <%= f.submit "Send", class: "btn-gf", id: "message-submit" %>
+    </span>
+  </div>
+<% end %>
+
+
+
     </div>
     <br><br><br><br><br>
   </div>
 </div>
+<script>
+  $(function() {
+  $('#message-form').submit(function(event) {
+    event.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url: form.attr('action'),
+      method: form.attr('method'),
+      data: form.serialize(),
+      dataType: 'json',
+      success: function(response) {
+        // add the new message to the chatroom view
+        var message = response.content;
+        var user = response.user.name;
+        var createdAt = new Date(response.created_at).toLocaleString();
+        var $messageContainer = $('<div>').addClass('message-container clearfix');
+        if (response.user_id === <%= current_user.id %>) {
+          var $myMessage = $('<div>').addClass('my-message').text(message);
+          var $myTimestamp = $('<div>').addClass('my-timestamp').text(createdAt);
+          $messageContainer.append($myMessage).append($myTimestamp);
+        } else {
+          var $otherMessage = $('<div>').addClass('other-message').text(message);
+          var $otherTimestamp = $('<div>').addClass('other-timestamp').text(user + ' - ' + createdAt);
+          $messageContainer.append($otherMessage).append($otherTimestamp);
+        }
+        $('#messages-container').append($messageContainer);
+        // clear the input field
+        $('#message_content').val('');
+      },
+      error: function(response) {
+        console.log('Error submitting form!');
+      }
+    });
+  });
+});
+</script>
+

@@ -31,6 +31,13 @@ class ChatroomsController < ApplicationController
     redirect_to chatroom_path(@single_room)
   end
 
+
+  def subscribed
+    # stream updates to the chatroom
+    chatroom = Chatroom.find(params[:chatroom_id])
+    stream_for chatroom
+  end
+
   private
 
   def chatroom_params
