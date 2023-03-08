@@ -1,10 +1,12 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.where(client_id: current_user.id)
+    @chatrooms = Chatroom.where(client_id: current_user.id).or(Chatroom.where(user_id: current_user.id))
     @chatrooms = @chatrooms.select { |chatroom| chatroom.messages.any? }.sort_by { |chatroom| chatroom.messages.last.created_at }
     @chatrooms_count = @chatrooms.count
   end
+  
+  
 
   def show
     @chatrooms = Chatroom.all

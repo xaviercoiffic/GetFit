@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :chatrooms, only: %i[index show] do
-  resources :messages, only: :create
+    resources :messages, only: :create do
+      collection do
+        get 'latest_messages'
+      end
+    end
   end
 
 get 'index' => 'users#index'
