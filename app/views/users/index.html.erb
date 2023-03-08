@@ -14,14 +14,26 @@
 </div>
 
 <div class="col d-flex justify-content-end whity">
-<i class="fas fa-bars fa-2x"></i>
-  </div>
+  <%= link_to "<i class=\"fas fa-sign-out fa-2x\"></i>".html_safe, destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "light" %>
 </div>
 
+</div>
 
-  <div class="row">
-    <h4 class="light thin">Your next booking session</h4>
-    <p class="glow"><%= @next_booking %></p>
+<div class="row">
+  <h4 class="glow thick">Your next booking session</h4>
+  <% if @next_booking %>
+    <p class="whity">Scheduled to GetFit on <strong> <%= @next_booking.date.strftime("%e, %B %Y") %> </strong></p>
+  <% else %>
+    <p class="whity">You have no upcoming bookings.</p>
+  <% end %>
+
+
+
+
+
+
+
+
   </div>
 
   <div class="row mt-4 mb-4">

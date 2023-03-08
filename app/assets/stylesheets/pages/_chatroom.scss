@@ -1,27 +1,26 @@
 .messages {
   height: 100%;
-  min-height: 300px;
   overflow-y: scroll;
   padding: 10px;
 }
 
 .my-message {
-  background-color: white;
-  color: black;
+  color: #a6ff00;
   padding: 10px;
   border-radius: 20px;
+  border: 1px solid #a6ff00;
   max-width: 70%;
   margin-bottom: 10px;
   text-align: right;
   float: right;
+  position: relative; /* set position property to relative */
 }
 
 .my-timestamp {
-  font-size: 0.8em;
-  margin-top: 5px;
-  text-align: right;
-  color: gray;
-  display: none;
+  clear: both; /* clear the float */
+  display: block; /* set display property to block */
+  margin-top: 5px; /* add margin-top to create space */
+  text-align: right; /* align timestamp to the left */
 }
 
 .other-message {
@@ -33,18 +32,37 @@
   margin-bottom: 10px;
   text-align: left;
   float: left;
+  position: relative; /* set position property to relative */
 }
 
 .other-timestamp {
-  font-size: 0.8em;
-  margin-top: 5px;
-  text-align: left;
-  color: gray;
-  display: none;
+  clear: both; /* clear the float */
+  display: block; /* set display property to block */
+  margin-top: 5px; /* add margin-top to create space */
+  text-align: left; /* align timestamp to the right */
+}
+
+.message-container {
+  margin-bottom: 20px; /* add margin to create space between message containers */
 }
 
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
+}
+
+.my-timestamp::before,
+.other-timestamp::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: $bg-color;
+  margin-bottom: 5px;
+}
+
+.my-timestamp,
+.other-timestamp {
+  font-size: 0.8em;
+  color: #94a1b264;
 }
