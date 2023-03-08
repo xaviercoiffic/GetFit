@@ -7,18 +7,89 @@ form {
 }
 
 /* Style the form inputs */
-input[type="date"],
-input[type="time"],
-select {
+
+.glowbox {
   background-color: transparent;
-  border: 2px solid $pri-cc;
+  border: 2px solid #a6ff00;
   color: white;
   border-radius: 20px;
   padding: 20px;
   margin-bottom: 20px;
   font-size: 20px;
   width: 100%;
+  &:focus{
+  background-color: transparent;
+  border: 2px solid #a6ff00;
+  color: white;
+  }
+  &:hover{
+    
+      background-color: transparent;
+      border: 2px solid #a6ff00;
+      color: white;
+      
+  }
+  &:active{
+    background-color: transparent;
+      border: 2px solid #a6ff00;
+      color: white;
+  }
 }
+
+.form-control {
+  background-color: transparent;
+  border: 2px solid #a6ff00;
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  width: 100%;
+  &:focus{
+    background-color: transparent;
+    border: 2px solid #a6ff00;
+    color: white;
+    }
+    &:hover{
+      
+        background-color: transparent;
+        border: 2px solid #a6ff00;
+        color: white;
+        
+    }
+    &:active{
+      background-color: transparent;
+        border: 2px solid #a6ff00;
+        color: white;
+    }
+}
+
+.glowbox {
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  &:focus{
+    background-color: transparent;
+    border: 2px solid #a6ff00;
+    color: white;
+    }
+    &:hover{
+      
+        background-color: transparent;
+        border: 2px solid #a6ff00;
+        color: white;
+        
+    }
+    &:active{
+      background-color: transparent;
+        border: 2px solid #a6ff00;
+        color: white;
+    }
+}
+
+
 
 
 .speciality-option input[type="radio"] {
