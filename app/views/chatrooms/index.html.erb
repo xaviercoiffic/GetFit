@@ -1,21 +1,29 @@
 <div class="layout-content">
-<div class="container my-4 light">
-  <h4 class="text-muted">You have <strong><%= @chatrooms_count %></strong> chats <i class="fas fa-comment-alt"></i></h4>
-  <% @chatrooms.reverse.each do |chatroom| %>
+  <h4 class="glow">You have <strong><%= @chatrooms_count %></strong> chats <i class="fas fa-comment-alt"></i></h4>
+ 
+<br>
+<div class="user-list">
+  <ul id="user-ul">
+    <% @chatrooms.reverse.each do |chatroom| %>
     <% last_message_time = chatroom.messages.last.created_at%>
-    <div class="card-user my-4">
-      <div class="card-user-infos">
-      
-        <h2><%= chatroom.user.name%></h2>
-        <p>Last message: <%= time_ago_in_words(last_message_time) %> ago</p>
-        <!--<p><strong><%= chatroom.user.email %></strong></p>-->
-      </div>
-      <div class="contact-buttons">
-        <%= link_to chatroom_path(chatroom), class:"btn-gf" do %>
+      <li class="li-user-card">
+        <div class="user-card">
+          <div>
+            <img src="<%= chatroom.user.photo%>" width="80px">
+          </div>
+          <div class="title-user-card">
+           <h3 class="glow"><%= chatroom.user.name%></h3>
+        <p class="light">Last message: <%= time_ago_in_words(last_message_time) %> ago</p>
+          </div>
+          <div>
+            <%= link_to chatroom_path(chatroom), class:"btn-gf" do %>
           <i class="fas fa-comments"></i>
         <% end %>
-      </div>
-    </div>
-  <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 </div>
+
 </div>

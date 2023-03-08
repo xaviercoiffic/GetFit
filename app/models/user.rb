@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   validates :email, presence: true, uniqueness: true
   serialize :speciality, Array
+  belongs_to :first_booking, class_name: "Booking", optional: true
+
 end

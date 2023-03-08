@@ -3,7 +3,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   
   def index
-    @bookings = current_user.bookings.includes(:package => :user)
+      @bookings = current_user.bookings.includes(:package => :user).order(date: :asc)
+      @first_booking = @bookings.first 
   end
 
   def show
@@ -27,7 +28,7 @@ class BookingsController < ApplicationController
     @booking.status = "completed"
 
     if @booking.save
-      next_booking
+      @next_booking = next_booking
       redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
     else
       render :new, locals: { user: @user }
@@ -35,11 +36,12 @@ class BookingsController < ApplicationController
   end
 
   def next_booking
-    @next_booking = "mon 23" # replace with your actual logic to calculate next booking date
-  end
+    @bookings.where("date >= ?", Date.today).order(:date).first if @bookings.present?
+    end
   
   def update
     if @booking.update(booking_params)
+      @next_booking = next_booking
       redirect_to user_booking_path(@user, @booking), notice: "Booking was successfully updated."
     else
       render :edit

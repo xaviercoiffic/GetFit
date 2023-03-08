@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def index
     @current_user = current_user
     @users = User.all
+    @next_booking = current_user.bookings.where("date >= ?", Date.today).order(:date).first
   end
 
   def show

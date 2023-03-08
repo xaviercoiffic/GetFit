@@ -100,3 +100,16 @@ i
 {
   cursor: pointer;
 }
+
+.nolinkstyle{
+  text-decoration: none !important;
+}
+
+a {
+  color: #a6ff00;
+  text-decoration: none; 
+  &:hover {
+    color: #a6ff00;
+    text-decoration: none;
+  }
+}
