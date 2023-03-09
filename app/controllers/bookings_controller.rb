@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
   
 
   def destroy
-    @booking.destroy
+    @booking.status = "Canceled"
     redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled." 
   end
 

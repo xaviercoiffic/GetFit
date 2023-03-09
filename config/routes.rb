@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: %i[index show] do
     resources :messages, only: :create do
       collection do
-        get 'latest_messages'
+        get '/chatrooms/:id/messages', to: 'chatrooms#messages'
       end
     end
   end
