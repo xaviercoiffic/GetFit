@@ -4,11 +4,11 @@
   <div class="col-10 d-flex align-items-center">
 <img src="<%= @current_user.photo %>" width="80px">
 <div class="col inline">
-<h6 class="whity px-3 thin">Welcome back!</h6>
+<p class="whity px-3 thin m-0">Welcome back!</p>
 <% if current_user.name.present? %>
-  <h6 class="glow px-3"><%= current_user.name %></h6>
+  <h5 class="glow px-3"><%= current_user.name %></h5>
 <% else %>
-  <h6 class="glow px-3">Let's do it?</h6>
+  <h5 class="glow px-3">Are you ready to GetFit?</h5>
 <% end %>
 </div>
 </div>
@@ -33,8 +33,8 @@
     
       <div class="mini-card-outline">
         <div class="col">
-          <h2>Steps</h2>
-          <h4 class="thin">4,234 steps</h4>
+          <h2 class="glow">Steps</h2>
+          <h4 class="thin whity">4,234 steps</h4>
         </div>
         <div class="col d-flex justify-content-end">
           <i class="fa-solid fa-stairs fa-3x"></i><br><br>
@@ -44,8 +44,8 @@
     
       <div class="mini-card-outline">
         <div class="col">
-          <h2>Calories</h2>
-          <h4 class="thin">2,500 calories</h4>
+          <h2 class="glow">Calories</h2>
+          <h4 class="thin whity">2,500 calories</h4>
         </div>
         <div class="col d-flex justify-content-end">
           <i class="fas fa-birthday-cake fa-3x"></i><br><br>
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="col"> 
-      <div class="mini-card">
+      <div class="mini-card-sec">
         <h2 class="mini-card-title"><i class="fa-solid fa-calculator"></i> Your BMI</h2>
         <p class="dark">Estimated from your details</p>
         <h1 class="thicker">20.1</h1>

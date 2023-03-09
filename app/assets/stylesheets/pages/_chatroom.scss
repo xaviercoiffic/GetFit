@@ -5,10 +5,11 @@
 }
 
 .my-message {
-  color: #a6ff00;
-  padding: 10px;
+  color: $white;
+  background-color: $sec-cc;
+  padding: 10px 20px 10px 20px;
   border-radius: 20px;
-  border: 1px solid #a6ff00;
+  border: 1px solid $sec-cc;
   max-width: 70%;
   margin-bottom: 10px;
   text-align: right;
@@ -26,7 +27,7 @@
 .other-message {
   background-color: #a6ff00;
   color: $bg-color;
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   border-radius: 20px;
   max-width: 70%;
   margin-bottom: 10px;
