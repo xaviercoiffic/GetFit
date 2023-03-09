@@ -1,0 +1,17 @@
+<div class="message-container clearfix">
+  <% if message.user == current_user %>
+    <div class="my-message">
+      <%= message.content %>
+    </div>
+    <div class="my-timestamp">
+      <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+    </div>
+  <% else %>
+    <div class="other-message">
+      <%= message.content %>
+    </div>
+    <div class="other-timestamp">
+      <%= message.created_at.strftime("%a %b %e %Y at %l:%M %p") %>
+    </div>
+  <% end %>
+</div>

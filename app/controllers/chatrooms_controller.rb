@@ -6,7 +6,6 @@ class ChatroomsController < ApplicationController
     @chatrooms_count = @chatrooms.count
   end
   
-  
 
   def show
     @chatrooms = Chatroom.all
