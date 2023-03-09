@@ -1,0 +1,2 @@
+$("#messages-container").html("<%= j render partial: 'messages/message', collection: @messages %>");
+$(".pagination").html("<%= j will_paginate @messages %>");

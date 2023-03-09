@@ -1,3 +1,11 @@
+<% if current_page?(controller: 'chatrooms', action: 'show') %>
+  <style>
+    .footer-container {
+      display: none;
+    }
+  </style>
+<% end %>
+
 <div class="layout-content">
   <div class="container chatroom">
     <div class="row pb-1">
@@ -50,8 +58,8 @@
     <div class="pt-5">
       <%= simple_form_for [@chatroom, @message], html: {class: "d-flex", id: "message-form"} do |f| %>
         <div class="input-group">
-          <%= f.input :content, label: false, placeholder: "Type your message here...", wrapper_html: {class: "flex-grow-1"}, input_html: {id: "message-content", style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none;"} %>
-          <span class="input-group-btn px-3">
+          <%= f.input :content, label: false, placeholder: "Type your message here...", wrapper_html: {class: "flex-grow-1"}, input_html: {id: "message-content", style: "border: none; border-bottom: 1px solid #a6ff00; border-radius: 0px; background-color: transparent; color: white; outline: none; width: 100%"} %>
+          <span class="input-group-btn">
             <%= f.submit "Send", class: "btn-gf", id: "message-submit" %>
           </span>
         </div>

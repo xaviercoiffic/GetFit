@@ -14,11 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :chatrooms, only: %i[index show] do
-    resources :messages, only: :create do
-      collection do
-        get '/chatrooms/:id/messages', to: 'chatrooms#messages'
-      end
-    end
+    resources :messages, only: :create
+    get '/messages', to: 'messages#index'
   end
 
 get 'index' => 'users#index'
