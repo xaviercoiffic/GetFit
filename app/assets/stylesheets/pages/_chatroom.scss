@@ -43,8 +43,14 @@
   text-align: left; /* align timestamp to the right */
 }
 
-.message-container {
-  margin-bottom: 20px; /* add margin to create space between message containers */
+#messages-container {
+  height: 45vh;
+  overflow-y: scroll;
+  scrollbar-width: none; /* hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* hide scrollbar for IE 10+ */
+}
+#messages-container::-webkit-scrollbar { /* hide scrollbar for Webkit browsers */
+  display: none;
 }
 
 .clearfix::after {
