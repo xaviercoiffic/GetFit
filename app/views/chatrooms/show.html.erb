@@ -12,7 +12,7 @@
           <br><br>
         <% end %>
       </div>
-      <hr class="light">
+      <hr class="light m-0">
       <div id="messages-container" class="messages pt-5">
         <% @chatroom.messages.each do |message| %>
           <div class="message-container clearfix">
@@ -61,7 +61,18 @@
   </div>
 </div>
 <script>
-  $(function() {
+  $(document).ready(function() {
+    // scroll to the bottom of the chat
+    $('#messages-container').scrollTop($('#messages-container')[0].scrollHeight);
+
+    setInterval(function() {
+      var chatroomId = <%= @chatroom.id %>;
+      $.ajax({
+        url: '/chatrooms/' + chatroomId + '/messages',
+        dataType: 'script'
+      });
+    }, 3000);
+
     $('#message-form').submit(function(event) {
       event.preventDefault();
       var form = $(this);
@@ -70,31 +81,34 @@
         method: form.attr('method'),
         data: form.serialize(),
         dataType: 'json',
-        success: function
-        (response) {
-        // add the new message to the chatroom view
-        var message = response.content;
-        var user = response.user.name;
-        var createdAt = new Date(response.created_at).toLocaleString();
-        var $messageContainer = $('<div>').addClass('message-container clearfix');
-        if (response.user_id === <%= current_user.id %>) {
-          var $myMessage = $('<div>').addClass('my-message').text(message);
-          var $myTimestamp = $('<div>').addClass('my-timestamp').text(createdAt);
-          $messageContainer.append($myMessage).append($myTimestamp);
-        } else {
-          var $otherMessage = $('<div>').addClass('other-message').text(message);
-          var $otherTimestamp = $('<div>').addClass('other-timestamp').text(user + ' - ' + createdAt);
-          $messageContainer.append($otherMessage).append($otherTimestamp);
+        success: function(response) {
+          // add the new message to the chatroom view
+          var message = response.content;
+          var user = response.user.name;
+          var createdAt = new Date(response.created_at).toLocaleString();
+          var $messageContainer = $('<div>').addClass('message-container clearfix');
+          if (response.user_id === <%= current_user.id %>) {
+            var $myMessage = $('<div>').addClass('my-message').text(message);
+            var $myTimestamp = $('<div>').addClass('my-timestamp').text(createdAt);
+            $messageContainer.append($myMessage).append($myTimestamp);
+          } else {
+            var $otherMessage = $('<div>').addClass('other-message').text(message);
+            var $otherTimestamp = $('<div>').addClass('other-timestamp').text(user + ' - ' + createdAt);
+            $messageContainer.append($otherMessage).append($otherTimestamp);
+          }
+          $('#messages-container').append($messageContainer);
+          // clear the input field
+          $('#message-content').val('');
+          // scroll to the bottom of the chat
+          $('#messages-container').scrollTop($('#messages-container')[0].scrollHeight);
+        },
+        error: function(response) {
+          console.log('Error submitting form!');
         }
-        $('#messages-container').append($messageContainer);
-        // clear the input field
-        $('#message-content').val('');
-      },
-      error: function(response) {
-        console.log('Error submitting form!');
-      }
+      });
     });
   });
-});
 </script>
+
+
 
