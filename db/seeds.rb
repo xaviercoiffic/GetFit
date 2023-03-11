@@ -149,7 +149,7 @@ User.create([{
 },
 {
   name: "Azhar Ollibokus",
-  email: "dussoye.neil@gmail.com",
+  email: "azhar4@gmail.com",
   password: "123456",
   photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678538741/GetFit/assets/Img/Ellipse_12_rzinlq.png",
   instructor: true,
@@ -160,7 +160,6 @@ User.create([{
 
   Education and Certifications:
 
-  Bachelor's degree in Sports Science from XYZ University
   Crossfit Level 1 Trainer Certification
   USA Boxing Coach Certification
   CPR/AED Certified
