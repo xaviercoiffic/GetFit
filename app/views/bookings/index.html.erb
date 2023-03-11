@@ -29,11 +29,7 @@
           </div>
           <div>
           <br>
-<%= link_to "Update Booking", edit_user_booking_path(booking.package.user, booking), class: "btn-gf" %>
-          <br> <br><br>
-
-<%= link_to "Cancel Booking", user_booking_path(@user, booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn-gf" %>
-
+<%= link_to "Cancel Booking", user_booking_path(@user, booking), method: :cancel, class: "btn-gf" %>
           </div>
         </div>
       </li>

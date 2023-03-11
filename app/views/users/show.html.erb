@@ -1,5 +1,17 @@
 <div class="layout-content">
-<div class="align-center">
+
+<div class="row p-2">
+  <div class="col glow">
+<a href="javascript:history.go(-1)">
+      <i class="fa-solid fa-chevron-left fa-2x"></i>
+    </a>  </div>
+  <div class="col glow" style="text-align: right;">
+    <h2> Instructor </h2>
+  </div>
+</div>
+
+
+<div class="align-center pt-5">
       <img src="<%= @user.photo %>" width="300px" >
       <br><br>
       <h1 class="light whity thick"> <%= @user.name %> </h1>
@@ -18,7 +30,7 @@
     <div class="user-show-card">
       
       <div class="d-flex justify-content-between align-items-center pb-4">
-        <h2 class="whity thicker"><%= package.title %></h2> <h5 class="light thick">Rs <%= package.price %></h6>
+        <h2 class="whity thicker"><%= package.title %></h2> <h5 class="whity thick">Rs <%= package.price %></h6>
         </div>
         <p class="light"><%= package.description %></p>
         <br>

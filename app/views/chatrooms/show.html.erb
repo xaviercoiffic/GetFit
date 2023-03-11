@@ -7,9 +7,14 @@
 <% end %>
 
 <div class="layout-content">
+
   <div class="container chatroom">
     <div class="row pb-1">
       <div class="col d-flex align-items-center justify-content-start mb-4">
+
+<a href="javascript:history.go(-1)">
+      <i class="fa-solid fa-chevron-left fa-2x px-4"></i>
+    </a>
         <% if current_user.id == @chatroom.user_id %>
           <img src="<%= User.find(@chatroom.client_id).photo %>" width="80px">
           <h3 class="glow px-3 thick nolinkstyle"><%= link_to User.find(@chatroom.client_id).name, user_path(@chatroom.client_id) %></h3>

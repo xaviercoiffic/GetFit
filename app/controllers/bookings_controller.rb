@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   
   def index
-    @bookings = current_user.bookings.includes(:package => :user)
+    @bookings = current_user.bookings.includes(:package => :user).order(created_at: :desc)
   end
 
   def show
@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @user = User.find(params[:user_id])
     @booking = @user.bookings.build(booking_params)
     @booking.user_id = current_user.id
-    @booking.status = "Booked"
+    @booking.status = "Booking"
 
     if @booking.save
       redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
@@ -50,9 +50,17 @@ class BookingsController < ApplicationController
   
 
   def destroy
-    @booking.status = "Canceled"
-    redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled." 
+    @booking.update(status: "Canceled")
+    redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled."
   end
+
+
+  def cancel
+    @booking.update(status: "Canceled")
+    redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled."
+  end
+
+
 
   def confirmation
     @user = User.find(params[:user_id])

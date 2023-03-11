@@ -5,9 +5,7 @@ class MessagesController < ApplicationController
 
   def index
     @chatroom = current_user.chatrooms.find_by(id: params[:chatroom_id])
-  
-    # Check if the current user is authorized to access the chatroom
-    unless @chatroom
+      unless @chatroom
       redirect_to root_path, alert: "You are not authorized to access this chatroom."
       return
     end
@@ -19,9 +17,8 @@ class MessagesController < ApplicationController
     end
   end
   
-  
   def create
-    @chatroom = Chatroom.find(params[:chatroom_id])
+    @chatroom = Chatroom.find(params[:chatroom_id]) 
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
