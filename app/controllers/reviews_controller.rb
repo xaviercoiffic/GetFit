@@ -1,22 +1,24 @@
 class ReviewsController < ApplicationController
   def new
+    @instructor = User.find(params[:user_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
-    @review.user = current_user
-    @review.package_id = Booking.find(params[:booking_id]).package_id
+    @booking = Booking.find(params[:booking_id])
     if @review.save
-      redirect_to "/thankyou"
+      redirect_to user_bookings_path(current_user)
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = "Something went wrong."
+      render :new, booking_id: params[:booking_id], user_id: params[:user_id]
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:booking_id, :user_id)
+    params.require(:review).permit(:content, :rating, :user_id)
   end
 end
