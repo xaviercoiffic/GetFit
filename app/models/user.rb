@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :goals
   has_many :chatrooms
-  has_many :reviews, through: :bookings
+  has_many :reviews
   validates :email, presence: true, uniqueness: true
   serialize :speciality, Array
 end

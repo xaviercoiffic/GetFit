@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   get 'profile', to: 'pages#profile'
   devise_for :users
   root to: "pages#home"
-  
+
 
   resources :users do
     resources :packages
-    resources :bookings
+    resources :bookings do
+      resources :reviews, only: [:new, :create, :show]
+    end
     resources :chatrooms, only: %i[create new]
   end
+
 
   resources :chatrooms, only: %i[index show] do
     resources :messages, only: :create do
