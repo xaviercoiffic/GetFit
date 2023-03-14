@@ -1,0 +1,21 @@
+<h3 class="glow">Reviews</h3>
+<% if @user.reviews.any? %>
+  <div class="reviews-list">
+    <ul>
+      <% @user.reviews.each do |review| %>
+        <li class="review-item">
+          <div class="review-rating">
+            <%= "*" * review.rating %>
+          </div>
+          <div class="review-content">
+            <p class="review-title"><%= review.title %></p>
+            <p class="review-text"><%= review.content %></p>
+            <p class="review-author">Posted by <%= review.user.name %> on <%= review.created_at.strftime('%B %d, %Y') %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>

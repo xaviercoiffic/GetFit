@@ -27,7 +27,7 @@
   var countdownElement = document.getElementById("countdown");
   var status = "<%= @booking.status %>";
   if (status === "Cancelled") {
-    countdownElement.innerHTML = "Oh no 😡! <br> You are now getting fat 😜 ";
+    countdownElement.innerHTML = "None!! 😡 <br> and now you'll GetFat 😜 ";
   } else if (diff < 0) {
     countdownElement.innerHTML = "It's today!!! 🤩 ";
   } else if (diff === 0) {
@@ -49,6 +49,7 @@
 <p class="whity"> Duration: <%= @booking.duration %> </p>
 <p class="whity"> Package: <%= @booking.package.title %> </p>
 <p class="whity"> Instructor: <%= @booking.package.user.name %> </p>
+
 </div>
 <% if @booking.status === "Cancelled" %>
   <%= form_for(@booking, url: cancel_user_booking_path(user_id: @user.id, id: @booking.id), method: :put, data: { confirm: "Are you sure you want to cancel this booking?" }) do |f| %>
@@ -60,5 +61,5 @@
   <% end %>
 <% end %>
 
-<br> <br> <br>
+<br> <br> <br> <br> <br> <br>
 </div>

@@ -165,26 +165,34 @@
 </div>
 
 			<!-- XC: This section is the JS code for the search -->
-			<script>
-			const searchInput = document.getElementById('user-search');
-			const userList = document.getElementById('user-ul');
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const searchInput = document.getElementById('user-search');
+		const userList = document.getElementById('user-ul');
 
-			searchInput.addEventListener('keyup', function(event) {
-				const searchText = event.target.value.toLowerCase();
-				const userCards = userList.querySelectorAll('.user-card');
+		function handleSearch(event) {
+			const searchText = event.target.value.trim().toLowerCase();
+			const userCards = userList.querySelectorAll('.user-card');
 
-				userCards.forEach(userCard => {
-					const name = userCard.querySelector('.title-user-card h5').textContent.toLowerCase();
-					const speciality = userCard.querySelector('.title-user-card p').textContent.toLowerCase();
+			userCards.forEach(userCard => {
+				const name = userCard.querySelector('.title-user-card h5').textContent.trim().toLowerCase();
+				const speciality = userCard.querySelector('.title-user-card p').textContent.trim().toLowerCase();
 
-					if (name.includes(searchText) || speciality.includes(searchText)) {
-						userCard.parentNode.style.display = 'block';
-					} else {
-						userCard.parentNode.style.display = 'none';
-					}
-				});
+				if (name.includes(searchText) || speciality.includes(searchText)) {
+					userCard.closest('li').style.display = '';
+				} else {
+					userCard.closest('li').style.display = 'none';
+				}
 			});
-			</script>
+		}
+
+		searchInput.addEventListener('input', handleSearch);
+
+		window.addEventListener('unload', function() {
+			searchInput.removeEventListener('input', handleSearch);
+		});
+	});
+</script>
 			<!-- XC: End of the JS search code -->
 
 <br><br><br>
