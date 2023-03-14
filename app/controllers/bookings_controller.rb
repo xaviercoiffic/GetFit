@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @user = User.find(params[:user_id])
     @booking = @user.bookings.build(booking_params)
     @booking.user_id = current_user.id
-    @booking.status = "Active"
+    @booking.status = "Confirmed"
 
     if @booking.save
       redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"

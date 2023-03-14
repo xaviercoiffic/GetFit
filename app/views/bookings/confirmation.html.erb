@@ -2,15 +2,19 @@
 
 <h1 class=" glow thicker">Yay! Booking is confirmed! 👍 </h1>
 <br>
-  <h2 class="whity">Your <%= @booking.specialities %> Session with</h2>
+  <h4 class="whity">Your <%= @booking.specialities %> Session with</h4>
   <br>
   <h1 class="glow thicker"><%= @booking.package.user.name %></h1>
   <br>
-  <h2 class="whity">Is scheduled on <br>
+  <h3 class="whity thin">Is scheduled on <br>
     <%= @booking.date.strftime('%-d, %B %Y') %> <br>
     at <%= @booking.time.strftime('%-I:%M%p') %>
-  </h2>
+  </h3>
   <br>
   <br>
-  <%= link_to "View My Bookings", user_bookings_path(current_user), class: "btn-gf w-400" %> <br><br><br>
+  <%= link_to "View My Bookings", user_bookings_path(current_user), class: "btn-gf w-100" %> <br><br><br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
