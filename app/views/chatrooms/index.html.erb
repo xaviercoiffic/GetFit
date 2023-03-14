@@ -10,7 +10,7 @@
           <% if current_user == chatroom.user %>
             <div class="user-card">
               <div>
-                <img src="<%= User.find(chatroom.client_id).photo %>" width="80px">
+                <img src=<%= User.find(chatroom.client_id).photo %> width="80px" class="user-photo">
               </div>
               <div class="title-user-card">
                 <h3 class="glow"><%= link_to User.find(chatroom.client_id).name, user_path(chatroom.client_id) %></h3>

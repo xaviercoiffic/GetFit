@@ -155,3 +155,13 @@ input:focus {
     margin-bottom: 20px;
   }
 }
+
+.user-photo {
+  width: 80px;
+}
+
+@media (max-width: 500px) {
+  .user-photo {
+    width: 150px;
+  }
+}
