@@ -1,16 +1,19 @@
 <div class="layout-content">
 
+<!-- XC : This is the return back action -->
 <div class="row p-2">
   <div class="col glow">
 <a href="javascript:history.go(-1)">
       <i class="fa-solid fa-chevron-left fa-2x"></i>
     </a>  </div>
-  <div class="col glow pb-5" style="text-align: right;">
+  <div class="col glow" style="text-align: right;">
     <h2> Booking </h2>
   </div>
 </div>
-
-<h4 class="light"> You are booking a session with</h4>
+<hr class="light">
+<!-- XC : End of the return back action -->
+<br>
+<h4 class="whity"> You are booking a session with</h4>
 <h1 class="glow thick"><%= user.name %> </h1>
 
 <div class="light mb-5">
@@ -21,10 +24,10 @@
 <% end %>
 <%= f.input :duration, label: "Duration", input_html: { class: 'glowbox' }, collection: ['1 Hour', '2 Hours', '3 Hours', '4 Hours'], prompt: 'Select duration' %>
 <%= f.collection_radio_buttons :specialities, @user.speciality, :to_s, :to_s, item_wrapper_class: 'speciality-option' do |b| %>
-<%= b.label(class: 'radio-inline') { b.radio_button + b.text } %>
+<%= b.label(class: 'radio-inline whity') { b.radio_button + b.text } %>
 <% end %>
   <%= f.input :package_id, as: :hidden, input_html: { value: @package.id } %>
-  <%= f.submit "Book", class: "btn-gf" %>
+  <%= f.submit "Book Now", class: "btn-gf" %>
 <% end %>
 </div>
 <br><br><br>

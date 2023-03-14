@@ -1,18 +1,61 @@
 <div class="layout-content">
 
-<h1>Booking Details</h1>
+<!-- XC : This is the return back action -->
+<div class="row p-2">
+  <div class="col glow">
+<a href="javascript:history.go(-1)">
+      <i class="fa-solid fa-chevron-left fa-2x"></i>
+    </a>  </div>
+  <div class="col glow" style="text-align: right;">
+    <h2> Booking </h2>
+  </div>
+</div>
+<hr class="light">
+<!-- XC : End of the return back action -->
 
-<p><strong>Date:</strong> <%= @booking.date %></p>
-<p><strong>Time:</strong> <%= @booking.time %></p>
+<h3 class="whity thick"> Days left to GetFit:</h3>
+<h1 class="glow thicker"><span id="countdown" class="glow"></span></h1>
 
-<h2>Other Bookings for <%= @user.name %></h2>
 
-<ul>
-  <% @user.bookings.each do |booking| %>
-    <li>
-      <%= link_to booking.date, booking %>
-      <%= booking.time %>
-    </li>
+<script>
+  // Calculate the time difference between now and the booking date
+  var bookingDate = new Date("<%= @booking.date %>");
+  var now = new Date();
+  var diff = Math.floor((bookingDate - now) / (1000 * 60 * 60 * 24));
+
+  // Update the countdown element with the days remaining or cancellation message
+  var countdownElement = document.getElementById("countdown");
+  var status = "<%= @booking.status %>";
+  if (status === "Cancelled") {
+    countdownElement.innerHTML = "Oh no! You are not getting fit! 😡 ";
+  } else if (diff < 0) {
+    countdownElement.innerHTML = "Booking date has passed 😔 ";
+  } else if (diff === 0) {
+    countdownElement.innerHTML = "Booking is today 🙌 ";
+  } else if (diff === 1) {
+    countdownElement.innerHTML = "1 day left 😁 ";
+  } else {
+    countdownElement.innerHTML = diff + " days left 💪 ";
+  }
+</script>
+
+<div class="col pt-5 pb-5">
+<p class="whity"> Status: <%= @booking.status %> </p>
+<p class="whity"> Date: <%= @booking.date %> </p>
+<p class="whity"> Time: <%= @booking.time.strftime('%-I:%M%p') %> </p>
+<p class="whity"> Duration: <%= @booking.duration %> </p>
+<p class="whity"> Package: <%= @booking.package.title %> </p>
+<p class="whity"> Instructor: <%= @booking.package.user.name %> </p>
+</div>
+<% if @booking.status === "Cancelled" %>
+  <%= form_for(@booking, url: cancel_user_booking_path(user_id: @user.id, id: @booking.id), method: :put, data: { confirm: "Are you sure you want to cancel this booking?" }) do |f| %>
+    <%= f.submit "Booking is cancelled", class: "btn-gf-disabled", disabled: true %>
   <% end %>
-</ul>
+<% else %>
+  <%= form_for(@booking, url: cancel_user_booking_path(user_id: @user.id, id: @booking.id), method: :put, data: { confirm: "Are you sure you want to cancel this booking?" }) do |f| %>
+    <%= f.submit "Cancel Booking", class: "btn-gf" %>
+  <% end %>
+<% end %>
+
+
 </div>

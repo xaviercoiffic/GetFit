@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @user = User.find(params[:user_id])
     @booking = @user.bookings.build(booking_params)
     @booking.user_id = current_user.id
-    @booking.status = "Booking"
+    @booking.status = "Active"
 
     if @booking.save
       redirect_to confirmation_booking_path(@user, @booking), notice: "Booking created successfully"
@@ -50,17 +50,22 @@ class BookingsController < ApplicationController
   
 
   def destroy
-    @booking.update(status: "Canceled")
+    @booking.update(status: "Cancelled")
     redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled."
   end
 
 
   def cancel
-    @booking.update(status: "Canceled")
-    redirect_to user_bookings_path(@user), notice: "Booking was successfully canceled."
+    @booking = current_user.bookings.find(params[:id])
+    @booking.update(status: "Cancelled")
+  
+    if request.referrer.include?("/bookings")
+      redirect_to user_bookings_path(current_user)
+    else
+      redirect_to confirmation_booking_path(@user, @booking)
+    end
   end
-
-
+  
 
   def confirmation
     @user = User.find(params[:user_id])
