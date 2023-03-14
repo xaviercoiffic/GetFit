@@ -154,9 +154,20 @@ User.create([{
   photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678538741/GetFit/assets/Img/Ellipse_12_rzinlq.png",
   instructor: true,
   description: "Azhar is a certified yoga teacher with a fervor for aiding individuals in enhancing their physical and mental well-being using yoga. His teaching approach is serene and soothing, making it ideal for both novices and seasoned practitioners.",
-  speciality: ["Bootcamp", "Fitness", "Training"],
+  speciality: ["Yoga", "Fitness", "Training"],
   height: 170,
   weight: 60,
+},
+{
+  name: "Mohammad Yaasir",
+  email: "yaasir@gmail.com",
+  password: "123456",
+  photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678827245/yassir_djra7l.png",
+  instructor: true,
+  description: "Yaasir is a skilled and experienced fitness coach who has a unique expertise in three distinct areas of physical training: yoga, martial arts, and weight lifting. With a passion for helping others reach their fitness goals, Yaasir uses his knowledge and training to create personalized workout plans that cater to each individual's needs and abilities",
+  speciality: ["Yoga", "Martial", "Weight Lifting"],
+  height: 175,
+  weight: 120,
 }
 ])
 Review.create!([{
