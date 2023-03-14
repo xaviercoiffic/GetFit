@@ -216,7 +216,7 @@ Review.create!([{
   rating: 4
   },
   {
-  user_id: 9,
+  user_id: 10,
   content: "Janet is an excellent instructor who has a gift for motivating her students and pushing them to their limits. Her bootcamp, fitness, and training classes are intense, but she always ensures that her students are working at a level that is safe and effective for them. Janet is an expert in her field and always keeps her classes interesting and challenging. She is approachable, knowledgeable, and always willing to answer any questions her students may have. I highly recommend Janet to anyone looking to improve their fitness and take their training to the next level.",
   rating: 2
   }])
