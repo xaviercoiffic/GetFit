@@ -170,56 +170,7 @@ User.create([{
   weight: 120,
 }
 ])
-Review.create!([{
-  user_id: 1,
-  content: "I had the pleasure of working with Kevin Hezrog, a CrossFit, Fitness, and Weights specialist, during my fitness journey. Kevin is an excellent instructor who knows how to motivate and challenge his students. His classes were always well-planned, with a variety of exercises and movements that kept me engaged and energized. He is also very approachable and always willing to provide feedback and advice to help me improve my form and technique. Overall, Kevin is a top-notch instructor, and I would highly recommend him to anyone looking to take their fitness to the next level.",
-  rating: 4
-  },
-  {
-  user_id: 2,
-  content: "I recently started taking classes with Larry Leffler, a Yoga, Mind-body, and Flexibility expert, and I have been blown away by his teaching style. Larry's classes are always calming and rejuvenating, and he provides clear instructions and modifications to accommodate different levels of ability. He has a calming presence that makes me feel relaxed and focused during each class. His expertise in mindfulness and flexibility has helped me to improve my overall wellness and achieve a greater sense of balance and peace. I would highly recommend Larry to anyone looking to enhance their yoga practice or develop a deeper connection between their mind and body.",
-  rating: 3
-  },
-  {
-  user_id: 3,
-  content: "Charlotte Pollich is a Boxing, Combat, and Bag specialist who I have had the pleasure of working with. Charlotte is an outstanding instructor who is passionate about her craft and dedicated to helping her students achieve their full potential. Her classes are challenging, engaging, and fun, and she creates a supportive environment that encourages everyone to push themselves to their limits. Charlotte is also very knowledgeable and provides excellent instruction on form, technique, and strategy. I highly recommend Charlotte to anyone looking to improve their boxing or combat skills.",
-  rating: 2
-  },
-  {
-  user_id: 4,
-  content: "Tami Haley is a Pilates, Fitness, and Core specialist who I have had the pleasure of working with. Tami is an exceptional instructor who is knowledgeable, professional, and motivating. Her classes are well-organized, challenging, and fun, and she always provides clear instruction and feedback to help me improve my technique and form. Tami is also very approachable and creates a supportive environment that encourages everyone to succeed. I highly recommend Tami to anyone looking to improve their fitness and core strength.",
-  rating: 4
-  },
-  {
-  user_id: 5,
-  content: "Floyd Morissette is a Spinning, Cycling, and Endurance specialist who I have had the pleasure of working with. Floyd is an exceptional instructor who is knowledgeable, professional, and motivating. His classes are high-energy, challenging, and fun, and he always provides clear instruction and feedback to help me improve my technique and form. Floyd is also very approachable and creates a supportive environment that encourages everyone to succeed. I highly recommend Floyd to anyone looking to improve their endurance and cycling skills.",
-  rating: 4
-  },
-  {
-  user_id: 6,
-  content: "Teri Frami is a Bodybuilding, Strength, and Muscles specialist who I have had the pleasure of working with. Teri is an exceptional instructor who is knowledgeable, professional, and motivating. Her classes are well-organized, challenging, and fun, and she always provides clear instruction and feedback to help me improve my technique and form. Teri is also very approachable and creates a supportive environment that encourages everyone to succeed. I highly recommend Teri to anyone looking to improve their bodybuilding or strength training.",
-  rating: 3
-  },
-  {
-  user_id: 7,
-  content: "Trevor is an exceptional instructor who brings a wealth of knowledge and experience to his classes. His passion for MMA, combat, and jiu-jitsu is evident in his teaching style, and he is always willing to go above and beyond to ensure that his students are getting the most out of each session. Trevor is patient, approachable, and always willing to answer any questions his students may have. I highly recommend Trevor to anyone looking to improve their skills in MMA, combat, or jiu-jitsu.",
-  rating: 4
-  },
-  {
-  user_id: 8,
-  content: "If you're looking for a fun and energetic way to get in shape, look no further than Ellis Hand's classes! Ellis is an expert in Zumba, dance, and cardio, and her classes are always a blast. She has a contagious energy that keeps her students motivated throughout the entire session. Ellis is an excellent instructor who takes the time to break down each move and make sure her students are getting the most out of their workout. I highly recommend Ellis to anyone looking for a fun and effective way to get in shape.",
-  rating: 4
-  },
-  {
-  user_id: 9,
-  content: "Sarah is an outstanding instructor who is passionate about kickboxing, martial arts, and sparring. Her classes are intense, but she always makes sure that her students are working at a level that is comfortable for them. Sarah is patient, approachable, and always willing to go the extra mile to help her students improve their skills. Her love for the sport is infectious, and it's impossible not to be motivated by her enthusiasm. I highly recommend Sarah to anyone looking to improve their skills in kickboxing, martial arts, or sparring.",
-  rating: 4
-  },
-  {
-  user_id: 10,
-  content: "Janet is an excellent instructor who has a gift for motivating her students and pushing them to their limits. Her bootcamp, fitness, and training classes are intense, but she always ensures that her students are working at a level that is safe and effective for them. Janet is an expert in her field and always keeps her classes interesting and challenging. She is approachable, knowledgeable, and always willing to answer any questions her students may have. I highly recommend Janet to anyone looking to improve their fitness and take their training to the next level.",
-  rating: 2
-  }])
+
 
 
 User.find_each do |user|
