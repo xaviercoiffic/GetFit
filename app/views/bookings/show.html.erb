@@ -49,8 +49,13 @@
 <p class="whity"> Duration: <%= @booking.duration %> </p>
 <p class="whity"> Package: <%= @booking.package.title %> </p>
 <p class="whity"> Instructor: <%= @booking.package.user.name %> </p>
+<br><br>
+<%= link_to "Add Review", new_user_booking_review_path(user_id: @user.id, booking_id: @booking.id), class: "btn-gf" %>
 
 </div>
+
+<h3 class="light"> Cancel the Booking </h3>
+
 <% if @booking.status === "Cancelled" %>
   <%= form_for(@booking, url: cancel_user_booking_path(user_id: @user.id, id: @booking.id), method: :put, data: { confirm: "Are you sure you want to cancel this booking?" }) do |f| %>
     <%= f.submit "Booking is cancelled", class: "btn-gf-disabled", disabled: true %>

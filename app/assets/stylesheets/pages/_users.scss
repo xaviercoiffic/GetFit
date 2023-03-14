@@ -165,3 +165,40 @@ input:focus {
     width: 150px;
   }
 }
+
+.star-rating {
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.star-rating:before {
+  content: '\2605\2605\2605\2605\2605';
+  color: #ddd;
+}
+
+.star-rating[data-rating="1"]:before {
+  content: '\2605\2606\2606\2606\2606';
+  color: #ffcc00;
+}
+
+.star-rating[data-rating="2"]:before {
+  content: '\2605\2605\2606\2606\2606';
+  color: #ffcc00;
+}
+
+.star-rating[data-rating="3"]:before {
+  content: '\2605\2605\2605\2606\2606';
+  color: #ffcc00;
+}
+
+.star-rating[data-rating="4"]:before {
+  content: '\2605\2605\2605\2605\2606';
+  color: #ffcc00;
+}
+
+.star-rating[data-rating="5"]:before {
+  content: '\2605\2605\2605\2605\2605';
+  color: #ffcc00;
+}
