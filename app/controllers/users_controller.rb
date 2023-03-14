@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @reviews = Review.all
+    @current_user = current_user
   end
 
   def new
