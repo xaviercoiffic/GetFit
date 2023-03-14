@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   get 'messages/create'
-  get 'chatroom_users/new'
-  get 'chatroom_users/create'
   get 'profile', to: 'pages#profile'
   
   devise_for :users

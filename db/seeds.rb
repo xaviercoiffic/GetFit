@@ -153,29 +153,7 @@ User.create([{
   password: "123456",
   photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678538741/GetFit/assets/Img/Ellipse_12_rzinlq.png",
   instructor: true,
-  description: "Specialties: Boxing, Crossfit
-
-  About Me:
-  I am a certified fitness instructor with a passion for helping people achieve their fitness goals. With over 5 years of experience in the fitness industry, I have gained extensive knowledge and expertise in various areas of fitness, particularly in boxing and Crossfit.
-
-  Education and Certifications:
-
-  Crossfit Level 1 Trainer Certification
-  USA Boxing Coach Certification
-  CPR/AED Certified
-  Training Style:
-  My training style is focused on combining the principles of boxing and Crossfit to provide a challenging and effective workout for my clients. I believe in pushing my clients to their limits while also ensuring that they maintain proper form and technique to prevent injury.
-
-  Services Offered:
-
-  One-on-one personal training sessions
-  Group fitness classes (boxing and Crossfit)
-  Nutritional guidance and meal planning
-  Philosophy:
-  I strongly believe that fitness is not just about physical strength but also mental resilience. Through my training, I aim to help my clients build both physical and mental strength to achieve their goals and improve their overall health and wellbeing.
-
-  Interests:
-  When I'm not training, I enjoy practicing martial arts, reading about fitness and nutrition, and spending time with my family and friends.",
+  description: " Azhar is a person who has a keen interest in sports, but he is not currently in a physically fit state. Despite his current condition, Azhar is motivated to improve his fitness level and hopes to actively participate in sports in the future.",
   speciality: ["Bootcamp", "Fitness", "Training"],
   height: 170,
   weight: 60,
