@@ -24,6 +24,34 @@
       <br><br><br>
       <p class="whity w-75 align-center"><%= @user.description %></p>
 
+
+<div class="col glow">
+
+
+<% total_rating = 0 %>
+<% num_reviews = 0 %>
+<% @reviews.each do |review| %>
+  <% if @current_user.id == review.user_id %>
+    <% total_rating += review.rating %>
+    <% num_reviews += 1 %>
+  <% end %>
+<% end %>
+
+<% if num_reviews > 0 %>
+  <% average_rating = total_rating / num_reviews %>
+  <div class="star-rating" data-rating="<%= average_rating %>">
+    <%# Display the average rating as stars %>
+  </div>
+<% else %>
+  <p>No reviews available yet</p>
+<% end %>
+
+
+
+</div>
+
+
+
       <br><br>
 
 <div class="user-list">

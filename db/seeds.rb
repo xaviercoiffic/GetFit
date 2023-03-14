@@ -153,7 +153,7 @@ User.create([{
   password: "123456",
   photo: "https://res.cloudinary.com/dbfx0jmo6/image/upload/v1678538741/GetFit/assets/Img/Ellipse_12_rzinlq.png",
   instructor: true,
-  description: " Azhar is a person who has a keen interest in sports, but he is not currently in a physically fit state. Despite his current condition, Azhar is motivated to improve his fitness level and hopes to actively participate in sports in the future.",
+  description: "Azhar is a certified yoga teacher with a fervor for aiding individuals in enhancing their physical and mental well-being using yoga. His teaching approach is serene and soothing, making it ideal for both novices and seasoned practitioners.",
   speciality: ["Bootcamp", "Fitness", "Training"],
   height: 170,
   weight: 60,
