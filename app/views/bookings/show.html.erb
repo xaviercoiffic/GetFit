@@ -29,15 +29,18 @@
   if (status === "Cancelled") {
     countdownElement.innerHTML = "Oh no! You are not getting fit! 😡 ";
   } else if (diff < 0) {
-    countdownElement.innerHTML = "Booking date has passed 😔 ";
+    countdownElement.innerHTML = "It's today!!! 🤩 ";
   } else if (diff === 0) {
-    countdownElement.innerHTML = "Booking is today 🙌 ";
+    countdownElement.innerHTML = "Booking is tomorrow 🙌 ";
   } else if (diff === 1) {
     countdownElement.innerHTML = "1 day left 😁 ";
+  } else if (diff < 1) {
+    countdownElement.innerHTML = "Less than 1 day left 😬";
   } else {
     countdownElement.innerHTML = diff + " days left 💪 ";
   }
 </script>
+
 
 <div class="col pt-5 pb-5">
 <p class="whity"> Status: <%= @booking.status %> </p>
