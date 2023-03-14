@@ -18,8 +18,8 @@
       <h4 class="light"><%= @user.speciality.join(', ') %></h4>
       <br>
       <%= link_to 'Start Chat', new_user_chatroom_path(@user), class: "btn-gf" %>
-      <br><br>
-      <p class="whity"><%= @user.description %></p>
+      <br><br><br>
+      <p class="whity w-75 align-center"><%= @user.description %></p>
 
       <br><br>
 
@@ -30,7 +30,7 @@
     <div class="user-show-card">
       
       <div class="d-flex justify-content-between align-items-center pb-4">
-        <h2 class="whity thicker"><%= package.title %></h2> <h5 class="whity thick">Rs <%= package.price %></h6>
+        <h2 class="whity thicker"><%= package.title %></h2> <h4 class="whity thick">Rs <%= package.price %></h4>
         </div>
         <p class="light"><%= package.description %></p>
         <br>
