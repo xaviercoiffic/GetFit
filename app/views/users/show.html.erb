@@ -31,9 +31,10 @@
 <% total_rating = 0 %>
 <% num_reviews = 0 %>
 <% @reviews.each do |review| %>
-  <% if @current_user.id == review.user_id %>
+  <% if @actual_user.id == review.user_id %>
     <% total_rating += review.rating %>
     <% num_reviews += 1 %>
+    <% total_rating %>
   <% end %>
 <% end %>
 
@@ -59,21 +60,21 @@
     <% @packages.each do |package| %>
   <li class="li-user-card">
     <div class="user-show-card">
-      
+
       <div class="d-flex justify-content-between align-items-center pb-4">
         <h2 class="whity thicker"><%= package.title %></h2> <h4 class="whity thick">Rs <%= package.price %></h4>
         </div>
         <p class="light"><%= package.description %></p>
         <br>
-      
-      
+
+
       <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
-       <br> <br> <br> 
+       <br> <br> <br>
     </div>
   </li>
 <% end %>
   </ul>
 </div>
-<br> <br> <br> 
+<br> <br> <br>
 </div>
 </div>
