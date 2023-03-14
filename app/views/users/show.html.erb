@@ -33,7 +33,7 @@
 <% average_rating = 0 %>
 
 <% @reviews.each do |review| %>
-  <% if @actual_user.id == review.user_id %>
+  <% if review.user_id == @user.id %>
     <% total_rating += review.rating %>
     <% num_reviews += 1 %>
     <% average_rating = total_rating / num_reviews %>
@@ -41,8 +41,9 @@
 <% end %>
 
 <div class="star-rating" data-rating="<%= average_rating %>">
-      <%# Display the average rating as stars %>
+  <%# Display the average rating as stars %>
 </div>
+
 
 
 </div>

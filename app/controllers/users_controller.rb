@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @reviews = Review.all
-    @current_user = current_user
-    @actual_user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @booking = Booking.find_by(user_id: @user.id, id: params[:booking_id])
+    @reviews = @user.reviews
   end
 
   def new

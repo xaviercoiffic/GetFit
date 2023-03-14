@@ -6,8 +6,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
     @booking = Booking.find(params[:booking_id])
+    @review = @booking.reviews.build(review_params)
+    @review.user_id = @booking.package.user_id
+    
     if @review.save
       redirect_to user_bookings_path(current_user)
     else
