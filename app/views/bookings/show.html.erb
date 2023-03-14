@@ -27,7 +27,7 @@
   var countdownElement = document.getElementById("countdown");
   var status = "<%= @booking.status %>";
   if (status === "Cancelled") {
-    countdownElement.innerHTML = "Oh no 😡! You are not getting fat 😜 ";
+    countdownElement.innerHTML = "Oh no 😡! <br> You are now getting fat 😜 ";
   } else if (diff < 0) {
     countdownElement.innerHTML = "It's today!!! 🤩 ";
   } else if (diff === 0) {
