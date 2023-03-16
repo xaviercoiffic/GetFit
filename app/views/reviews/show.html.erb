@@ -8,14 +8,19 @@
             <%= "*" * review.rating %>
           </div>
           <div class="review-content">
-            <p class="review-title"><%= review.title %></p>
-            <p class="review-text"><%= review.content %></p>
-            <p class="review-author">Posted by <%= review.user.name %> on <%= review.created_at.strftime('%B %d, %Y') %></p>
+            <p class="review-title">
+              <%= review.title %>
+            </p>
+            <p class="review-text">
+              <%= review.content %>
+            </p>
+            <p class="review-author">Posted by <%= review.user.name %> on <%= review.created_at.strftime('%B %d, %Y') %>
+            </p>
           </div>
         </li>
-      <% end %>
+        <% end %>
     </ul>
   </div>
-<% else %>
-  <p>No reviews yet.</p>
-<% end %>
+  <% else %>
+    <p>No reviews yet.</p>
+    <% end %>

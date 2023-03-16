@@ -1,28 +1,29 @@
 <div class="layout-content">
 
-<div class="row justify-align-center">
-  <h2 class="glow"> My Profile </h2>
+  <div class="row justify-align-center">
+    <h2 class="glow"> My Profile </h2>
+  </div>
+
+
+  <div clas="pt-5">
+    <br><br>
+    <img src="<%= current_user.photo %>" width="200px">
+    <br><br>
+    <h2 class="glow thick">
+      <%= current_user.name %>
+    </h2>
+    <p class="whity">
+      <%= current_user.description %>
+    </p>
+    <hr class="light">
+    <h5 class="light thin"> Height: <%= current_user.height %> CM</h5>
+    <h5 class="light thin"> Weight: <%= current_user.weight %> KG</h5>
+    <hr class="light">
+  </div>
+
+  <br>
+  <%= link_to "Log Out" , destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn-gf"
+    %>
+    <br><br><br><br><br>
 </div>
-
-
-<div clas="pt-5">
-<br><br>
-<img src="<%= current_user.photo %>" width="200px">
-<br><br>
-<h2 class="glow thick"><%= current_user.name %></h2>
-<p class="whity"> <%= current_user.description %> </p>
-  <hr class="light">
-<h5 class="light thin"> Height: <%= current_user.height %> CM</h5>
-<h5 class="light thin"> Weight: <%= current_user.weight %> KG</h5>
-  <hr class="light">
 </div>
-
-<br>
-<%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn-gf" %>
-<br><br><br><br><br>
-</div>
-</div>
-
-
-
-

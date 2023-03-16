@@ -1,203 +1,231 @@
 <div class="layout-content">
 
-<div class="row d-flex align-items-center mb-5">
-  <div class="col-10 d-flex align-items-center">
-<img src="<%= @current_user.photo %>" width="80px">
-<div class="col inline">
-<p class="whity px-3 thin m-0">Welcome back!</p>
-<% if current_user.name.present? %>
-  <h5 class="glow px-3"><%= current_user.name %></h5>
-<% else %>
-  <h5 class="glow px-3">Are you ready to GetFit?</h5>
-<% end %>
-</div>
-</div>
+	<div class="row d-flex align-items-center mb-5">
+		<div class="col-10 d-flex align-items-center">
+			<img src="<%= @current_user.photo %>" width="80px">
+			<div class="col inline">
+				<p class="whity px-3 thin m-0">Welcome back!</p>
+				<% if current_user.name.present? %>
+					<h5 class="glow px-3">
+						<%= current_user.name %>
+					</h5>
+					<% else %>
+						<h5 class="glow px-3">Are you ready to GetFit?</h5>
+						<% end %>
+			</div>
+		</div>
 
-<div class="col d-flex justify-content-end whity">
-  <%= link_to "<i class=\"fas fa-sign-out fa-2x\"></i>".html_safe, destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "light" %>
-</div>
+		<div class="col d-flex justify-content-end whity">
+			<%= link_to "<i class=\" fas fa-sign-out fa-2x\"></i>".html_safe, destroy_user_session_path, method: :delete,
+				data: { turbo_method: :delete }, class: "light" %>
+		</div>
 
-</div>
-
-<div class="row">
-  <h4 class="glow thick">Your next booking session</h4>
-  <% if @next_booking %>
-    <p class="whity">Scheduled to GetFit on <strong> <%= @next_booking.date.strftime("%e, %B %Y") %> </strong></p>
-  <% else %>
-    <p class="whity">You have no upcoming bookings.</p>
-  <% end %>
-
-  </div>
-
-  <div class="row mt-4 mb-4">
-    
-      <div class="mini-card-outline">
-        <div class="col">
-          <h2 class="glow">Steps</h2>
-          <h4 class="thin whity">4,234 steps</h4>
-        </div>
-        <div class="col d-flex justify-content-end">
-          <i class="fa-solid fa-stairs fa-3x"></i><br><br>
-        </div>
-      </div>
-    
-    
-      <div class="mini-card-outline">
-        <div class="col">
-          <h2 class="glow">Calories</h2>
-          <h4 class="thin whity">2,500 calories</h4>
-        </div>
-        <div class="col d-flex justify-content-end">
-          <i class="fas fa-birthday-cake fa-3x"></i><br><br>
-        </div>
-      </div>
-    
-  </div>
-
-  <div class="row justify-content-between">
-    <div class="col"> 
-      <div class="mini-card">
-        <h2 class="mini-card-title"><i class="fa-solid fa-heart fa-beat"></i> Heartbeat</h2>
-        <p class="dark">Reading from your iWatch</p>
-        <h1 id="random-number" class="thicker"></h1>
-    		<script>
-				function generateRandomNumber() {
-					return Math.floor(Math.random() * (110 - 98 + 1) + 98);
-				}
-				function displayRandomNumber() {
-					document.getElementById("random-number").innerHTML = generateRandomNumber();
-				}
-				setInterval(displayRandomNumber, 3000);
-      	</script>
-      </div>
-    </div>
-    <div class="col"> 
-      <div class="mini-card-sec">
-        <h2 class="mini-card-title"><i class="fa-solid fa-calculator"></i> Your BMI</h2>
-        <p class="dark">Estimated from your details</p>
-        <h1 class="thicker">20.1</h1>
-      </div>
-    </div>
-  </div>
-
-
-<!-- XC: This section is the code for the stopwatch -->
-<div class="timerwatch">
-	<div class="stopwatch">
-		<p class="timer-text" onclick="start()">Start |</p>  
-		<p class="timer-text" onclick="stop()">Stop |</p> 
-		<p class="timer-text" onclick="reset()">Reset</p> 
-    <h1 id="timer" class="timer">00:00:000</h1>
-	<script>
-		var startTime;
-		var elapsedTime = 0;
-		var timerInterval;
-
-		function pad(num, size) {
-			var s = num+"";
-			while (s.length < size) {
-				s = "0" + s;
-			}
-			return s;
-		}
-
-		function updateTimer() {
-			var ms = elapsedTime % 1000;
-			var s = Math.floor(elapsedTime / 1000) % 60;
-			var m = Math.floor(elapsedTime / (1000 * 60));
-			var displayString = pad(m, 2) + ":" + pad(s, 2) + ":" + pad(ms, 3);
-			document.getElementById("timer").innerHTML = displayString;
-		}
-
-		function start() {
-			startTime = Date.now() - elapsedTime;
-			timerInterval = setInterval(function() {
-				elapsedTime = Date.now() - startTime;
-				updateTimer();
-			}, 10);
-		}
-
-		function stop() {
-			clearInterval(timerInterval);
-		}
-
-		function reset() {
-			elapsedTime = 0;
-			updateTimer();
-		}
-	</script>
 	</div>
-</div>
-<br>
-<!-- XC: End of the stopwatch code -->
+
+	<div class="row">
+		<h4 class="glow thick">Your next booking session</h4>
+		<% if @next_booking %>
+			<p class="whity">Scheduled to GetFit on <strong>
+					<%= @next_booking.date.strftime("%e, %B %Y") %>
+				</strong></p>
+			<% else %>
+				<p class="whity">You have no upcoming bookings.</p>
+				<% end %>
+
+	</div>
+
+	<div class="row mt-4 mb-4">
+
+		<div class="mini-card-outline">
+			<div class="col">
+				<h2 class="glow">Steps</h2>
+				<h4 class="thin whity">4,234 steps</h4>
+			</div>
+			<div class="col d-flex justify-content-end">
+				<i class="fa-solid fa-stairs fa-3x"></i><br><br>
+			</div>
+		</div>
 
 
-<div class="row justify-align-center">
-<div class="col">
-  <h2 class="glow">Instructors </h2>
-</div>
-<div class="col">
-	<div class="search-container">
-  <input type="text" id="user-search" placeholder="Search">
-</div>
-</div>
-</div>
-  <br>
-<div class="user-list">
-  <ul id="user-ul">
-    <% @users.select { |user| user.instructor }.each.with_index(1) do |user, i| %>
-      <li class="li-user-card">
-        <div class="user-card">
+		<div class="mini-card-outline">
+			<div class="col">
+				<h2 class="glow">Calories</h2>
+				<h4 class="thin whity">2,500 calories</h4>
+			</div>
+			<div class="col d-flex justify-content-end">
+				<i class="fas fa-birthday-cake fa-3x"></i><br><br>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row justify-content-between">
+		<div class="col">
+			<div class="mini-card">
+				<h2 class="mini-card-title"><i class="fa-solid fa-heart fa-beat"></i> Heartbeat</h2>
+				<p class="dark">Reading from your iWatch</p>
+				<h1 id="random-number" class="thicker"></h1>
+				<script>
+					function generateRandomNumber() {
+						return Math.floor(Math.random() * (110 - 98 + 1) + 98);
+					}
+					function displayRandomNumber() {
+						document.getElementById("random-number").innerHTML = generateRandomNumber();
+					}
+					setInterval(displayRandomNumber, 3000);
+				</script>
+			</div>
+		</div>
+		<div class="col">
+			<div class="mini-card-sec">
+				<h2 class="mini-card-title"><i class="fa-solid fa-calculator"></i> Your BMI</h2>
+				<p class="dark">Estimated from your details</p>
+				<h1 class="thicker">20.1</h1>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- XC: This section is the code for the stopwatch -->
+	<div class="timerwatch">
+		<div class="stopwatch">
+			<p class="timer-text" onclick="start()">Start |</p>
+			<p class="timer-text" onclick="stop()">Stop |</p>
+			<p class="timer-text" onclick="reset()">Reset</p>
+			<h1 id="timer" class="timer">00:00:000</h1>
+			<script>
+				var startTime;
+				var elapsedTime = 0;
+				var timerInterval;
+
+				function pad(num, size) {
+					var s = num + "";
+					while (s.length < size) {
+						s = "0" + s;
+					}
+					return s;
+				}
+
+				function updateTimer() {
+					var ms = elapsedTime % 1000;
+					var s = Math.floor(elapsedTime / 1000) % 60;
+					var m = Math.floor(elapsedTime / (1000 * 60));
+					var displayString = pad(m, 2) + ":" + pad(s, 2) + ":" + pad(ms, 3);
+					document.getElementById("timer").innerHTML = displayString;
+				}
+
+				function start() {
+					startTime = Date.now() - elapsedTime;
+					timerInterval = setInterval(function () {
+						elapsedTime = Date.now() - startTime;
+						updateTimer();
+					}, 10);
+				}
+
+				function stop() {
+					clearInterval(timerInterval);
+				}
+
+				function reset() {
+					elapsedTime = 0;
+					updateTimer();
+				}
+			</script>
+		</div>
+	</div>
+	<br>
+	<!-- XC: End of the stopwatch code -->
+
+
+	<div class="row justify-align-center">
+		<div class="col">
+			<h2 class="glow">Instructors </h2>
+		</div>
+		<div class="col">
+			<div class="search-container">
+				<input type="text" id="user-search" placeholder="Search">
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="user-list">
+		<ul id="user-ul">
+			<% @users.select { |user| user.instructor }.each.with_index(1) do |user, i| %>
+				<li class="li-user-card">
+					<div class="user-card">
+						<div>
+							<img src="<%= user.photo %>" width="80px" class="user-photo">
+						</div>
+						<div class="title-user-card">
+							<h5 class="whity thick">
+								<%= user.name %>
+							</h5>
+							<p class="light light">
+								<%= user.speciality.join(", ") %></p>
+          </div>
           <div>
-            <img src="<%= user.photo %>" width="80px" class="user-photo">
-          </div>
-          <div class="title-user-card">
-            <h5 class="whity thick"><%= user.name %></h5>
-           <p class="light light"><%= user.speciality.join(', ') %></p>
-          </div>
-          <div>
-            <%= link_to "View", user_path(user), class: "btn-gf" %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
+            <%= link_to " View", user_path(user), class: "btn-gf" %>
+						</div>
+					</div>
+				</li>
+				<% end %>
+		</ul>
+	</div>
 
-			<!-- XC: This section is the JS code for the search -->
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		const searchInput = document.getElementById('user-search');
-		const userList = document.getElementById('user-ul');
+	<!-- XC: This section is the JS code for the search -->
+	<script>
+		function debounce(func, wait) {
+			let timeout;
+			return function executedFunction(...args) {
+				const later = () => {
+					clearTimeout(timeout);
+					func(...args);
+				};
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+			};
+		}
 
 		function handleSearch(event) {
-			const searchText = event.target.value.trim().toLowerCase();
-			const userCards = userList.querySelectorAll('.user-card');
+			const searchInput = document.getElementById("user-search");
+			const userList = document.getElementById("user-ul");
 
-			userCards.forEach(userCard => {
-				const name = userCard.querySelector('.title-user-card h5').textContent.trim().toLowerCase();
-				const speciality = userCard.querySelector('.title-user-card p').textContent.trim().toLowerCase();
+			if (!searchInput || !userList) {
+				console.error("Error: Unable to find search input or user list element.");
+				return;
+			}
+
+			const searchText = event.target.value.trim().toLowerCase();
+			const userCards = userList.querySelectorAll(".user-card");
+
+			userCards.forEach((userCard) => {
+				const name = userCard
+					.querySelector(".title-user-card h5")
+					.textContent.trim()
+					.toLowerCase();
+				const speciality = userCard
+					.querySelector(".title-user-card p")
+					.textContent.trim()
+					.toLowerCase();
 
 				if (name.includes(searchText) || speciality.includes(searchText)) {
-					userCard.closest('li').style.display = '';
+					userCard.closest("li").style.display = "";
 				} else {
-					userCard.closest('li').style.display = 'none';
+					userCard.closest("li").style.display = "none";
 				}
 			});
 		}
 
-		searchInput.addEventListener('input', handleSearch);
+		const debouncedHandleSearch = debounce(handleSearch, 200);
 
-		window.addEventListener('unload', function() {
-			searchInput.removeEventListener('input', handleSearch);
+		document.addEventListener("input", (event) => {
+			if (event.target.matches("#user-search")) {
+				debouncedHandleSearch(event);
+			}
 		});
-	});
-</script>
-			<!-- XC: End of the JS search code -->
+	</script>
 
-<br><br><br>
+	<!-- XC: End of the JS search code -->
+
+	<br><br><br>
 </div>
-
-
-
-

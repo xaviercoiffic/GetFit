@@ -1,77 +1,89 @@
 <div class="layout-content">
 
-<!-- XC : This is the return back action -->
-<div class="row p-2">
-  <div class="col glow">
-<a href="javascript:history.go(-1)">
-      <i class="fa-solid fa-chevron-left fa-2x"></i>
-    </a>  </div>
-  <div class="col glow" style="text-align: right;">
-    <h2> Instructor </h2>
-  </div>
-</div>
-<hr class="light">
-<!-- XC : End of the return back action -->
-
-
-<div class="align-center pt-5">
-      <img src="<%= @user.photo %>" width="300px" >
-      <br><br>
-      <h1 class="light whity thick"> <%= @user.name %> </h1>
-      <h4 class="light"><%= @user.speciality.join(', ') %></h4>
-      <br>
-      <%= link_to 'Start Chat', new_user_chatroom_path(@user), class: "btn-gf" %>
-      <br><br><br>
-      <p class="whity w-75 align-center"><%= @user.description %></p>
-
-
-<div class="col glow pt-5">
-
-
-<% total_rating = 0 %>
-<% num_reviews = 0 %>
-<% average_rating = 0 %>
-
-<% @reviews.each do |review| %>
-  <% if review.user_id == @user.id %>
-    <% total_rating += review.rating %>
-    <% num_reviews += 1 %>
-    <% average_rating = total_rating / num_reviews %>
-  <% end %>
-<% end %>
-
-<div class="star-rating" data-rating="<%= average_rating %>">
-  <%# Display the average rating as stars %>
-</div>
-
-
-
-</div>
-
-
-
-      <br><br>
-
-<div class="user-list">
-  <ul id="user-ul">
-    <% @packages.each do |package| %>
-  <li class="li-user-card">
-    <div class="user-show-card">
-
-      <div class="d-flex justify-content-between align-items-center pb-4">
-        <h2 class="whity thicker"><%= package.title %></h2> <h4 class="whity thick">Rs <%= package.price %></h4>
-        </div>
-        <p class="light"><%= package.description %></p>
-        <br>
-
-
-      <%= link_to "Book Now", new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
-       <br> <br> <br>
+  <!-- XC : This is the return back action -->
+  <div class="row p-2">
+    <div class="col glow">
+      <a href="javascript:history.go(-1)">
+        <i class="fa-solid fa-chevron-left fa-2x"></i>
+      </a>
     </div>
-  </li>
-<% end %>
-  </ul>
-</div>
-<br> <br> <br>
-</div>
+    <div class="col glow" style="text-align: right;">
+      <h2> Instructor </h2>
+    </div>
+  </div>
+  <hr class="light">
+  <!-- XC : End of the return back action -->
+
+
+  <div class="align-center pt-5">
+    <img src="<%= @user.photo %>" width="300px">
+    <br><br>
+    <h1 class="light whity thick">
+      <%= @user.name %>
+    </h1>
+    <h4 class="light">
+      <%= @user.speciality.join(", ") %></h4>
+      <br>
+      <%= link_to " Start Chat", new_user_chatroom_path(@user), class: "btn-gf" %>
+        <br><br><br>
+        <p class="whity w-75 align-center">
+          <%= @user.description %>
+        </p>
+
+
+        <div class="col glow pt-5">
+
+
+          <% total_rating=0 %>
+            <% num_reviews=0 %>
+              <% average_rating=0 %>
+
+                <% @reviews.each do |review| %>
+                  <% if review.user_id==@user.id %>
+                    <% total_rating +=review.rating %>
+                      <% num_reviews +=1 %>
+                        <% average_rating=total_rating / num_reviews %>
+                          <% end %>
+                            <% end %>
+
+                              <div class="star-rating" data-rating="<%= average_rating %>">
+                                <% # Display the average rating as stars %>
+                              </div>
+
+
+
+        </div>
+
+
+
+        <br><br>
+
+        <div class="user-list">
+          <ul id="user-ul">
+            <% @packages.each do |package| %>
+              <li class="li-user-card">
+                <div class="user-show-card">
+
+                  <div class="d-flex justify-content-between align-items-center pb-4">
+                    <h2 class="whity thicker">
+                      <%= package.title %>
+                    </h2>
+                    <h4 class="whity thick">Rs <%= package.price %>
+                    </h4>
+                  </div>
+                  <p class="light">
+                    <%= package.description %>
+                  </p>
+                  <br>
+
+
+                  <%= link_to "Book Now" , new_user_booking_path(@user, package_id: package.id), class: "btn-gf" %>
+                    <br> <br> <br>
+                </div>
+              </li>
+              <% end %>
+          </ul>
+        </div>
+        <br> <br> <br>
+  </div>
 </div>
