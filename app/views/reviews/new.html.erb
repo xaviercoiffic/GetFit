@@ -1,29 +1,33 @@
 <div class="layout-content">
 
-<!-- XC : This is the return back action -->
-<div class="row p-2">
-  <div class="col glow">
-<a href="javascript:history.go(-1)">
-      <i class="fa-solid fa-chevron-left fa-2x"></i>
-    </a>  </div>
-  <div class="col glow" style="text-align: right;">
-    <h2> Reviews </h2>
+  <!-- XC : This is the return back action -->
+  <div class="row p-2">
+    <div class="col glow">
+      <a href="javascript:history.go(-1)">
+        <i class="fa-solid fa-chevron-left fa-2x"></i>
+      </a>
+    </div>
+    <div class="col glow" style="text-align: right;">
+      <h2> Reviews </h2>
+    </div>
   </div>
-</div>
-<hr class="light">
-<!-- XC : End of the return back action --> 
+  <hr class="light">
+  <!-- XC : End of the return back action -->
 
-<h3 class="whity thin pt-5">Leave a rating for </h3>
-<h2 class="glow thicker pb-5"><%= @booking.package.user.name %></h2>
+  <h3 class="whity thin pt-5">Leave a rating for </h3>
+  <h2 class="glow thicker pb-5">
+    <%= @booking.package.user.name %>
+  </h2>
 
   <div class="row">
     <div class="col whity">
       <%= simple_form_for [@instructor, @booking, @review] do |f| %>
-    <%= f.input :content, label: "Comment" %>
-    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
-    <%= f.input :user_id, as:"hidden", input_html: { value: @instructor.id} %>
-    <%= f.submit class: "btn-gf" %>
-<% end %>
+        <%= f.input :content, label: "Comment" %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" , input_html: {data:
+            {controller: "star-rating" }} %>
+            <%= f.input :user_id, as:"hidden", input_html: { value: @instructor.id} %>
+              <%= f.submit class: "btn-gf" %>
+                <% end %>
 
     </div>
   </div>
